@@ -33,3 +33,11 @@ dist-ssr
 .freebuff/bun
 .freebuff/bun-cache/
 .freebuff/project-id
+.freebuff/venv/
+.freebuff/weights/
+.freebuff/upscaled-4k/
+.freebuff/upscaled-8k/
+.freebuff/*.log
+*.mp4
+!public/walkthroughs/*.mp4
+public/walkthroughs/hero-montage-4k.mp4

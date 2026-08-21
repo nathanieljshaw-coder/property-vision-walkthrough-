@@ -18,6 +18,8 @@ export type ServicePage = {
   productName: string;
   metaTitle: string;
   metaDescription: string;
+  /** feature checklist shown on the pricing page (mirrors package cards) */
+  features?: string[];
 };
 
 export const servicePages: ServicePage[] = [
@@ -72,6 +74,13 @@ export const servicePages: ServicePage[] = [
     priceNote: "Give potential guests a better way to experience your property.",
     ctaLabel: "Create Your Property Experience",
     amount: 19900,
+    features: [
+      "Cinematic walkthrough built from your existing photos & videos",
+      "Natural room-by-room journey through your property",
+      "Shareable link for listings, socials and email",
+      "Works beautifully on phones, tablets and desktops",
+      "Designed around your property's branding",
+    ],
     productName: "Property Experience — Airbnb & Holiday Rentals",
     metaTitle: "Airbnb & Holiday Rental Walkthroughs | LUMEN",
     metaDescription:
@@ -138,6 +147,13 @@ export const servicePages: ServicePage[] = [
     priceNote: "Give potential guests a reason to explore your hotel before they book.",
     ctaLabel: "Create Your Hotel Experience",
     amount: 59900,
+    features: [
+      "Individual walkthroughs for every room category & suite",
+      "Restaurant, spa, pool and facility experiences",
+      "Guests can explore and compare before they book",
+      "Integrated directly into your hotel website",
+      "Scalable from boutique B&Bs to large resorts",
+    ],
     productName: "Hotel Digital Experience",
     metaTitle: "Hotel Digital Experiences & Room Walkthroughs | LUMEN",
     metaDescription:
@@ -205,6 +221,13 @@ export const servicePages: ServicePage[] = [
     priceNote: "Give golfers a reason to explore your course before they arrive.",
     ctaLabel: "Create Your Golf Experience",
     amount: 79900,
+    features: [
+      "Hole-by-hole experiences across your course",
+      "Clubhouse, restaurant and practice facility tours",
+      "Attract visitors, members and resort guests",
+      "Combine multiple experiences into one platform",
+      "Built around your club's branding",
+    ],
     productName: "Golf Course & Resort Experience",
     metaTitle: "Golf Course & Resort Digital Experiences | LUMEN",
     metaDescription:
@@ -266,6 +289,13 @@ export const servicePages: ServicePage[] = [
     priceNote: "Create a website that represents your business properly.",
     ctaLabel: "Create Your Website",
     amount: 19900,
+    features: [
+      "Bespoke design around your existing brand",
+      "Galleries and cinematic walkthrough integration",
+      "Mobile-first and search-engine ready",
+      "Contact forms, location and social links",
+      "Easy to update as your business grows",
+    ],
     productName: "Business Website",
     metaTitle: "Professional Business Website Design | LUMEN",
     metaDescription:

@@ -2,6 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Building2, Film, Home, Landmark } from "lucide-react";
 import { servicePages } from "@/content/services";
 
+import villaHero from "@/assets/portfolio/villa-sereno-hero.jpg";
+import alpineHero from "@/assets/portfolio/grand-alpine-hero.jpg";
+import golfHero from "@/assets/portfolio/pine-valley-hero.jpg";
+import websiteHero from "@/assets/portfolio/apex-estate-hero.jpg";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -24,6 +29,13 @@ export const Route = createFileRoute("/")({
 
 const icons = { airbnb: Home, hotels: Building2, golf: Landmark, websites: Film } as const;
 
+const cardImages: Record<string, string> = {
+  airbnb: villaHero,
+  hotels: alpineHero,
+  golf: golfHero,
+  websites: websiteHero,
+};
+
 function Index() {
   return (
     <div>
@@ -38,7 +50,7 @@ function Index() {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-noise" />
-        <div className="absolute inset-0 bg-gradient-to-tr from-background via-background to-surface-raised opacity-85" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-background/75 via-background/40 to-transparent" />
         <div
           aria-hidden
           className="absolute -right-40 top-24 h-[32rem] w-[32rem] rounded-full bg-gold/10 blur-3xl"
@@ -53,7 +65,7 @@ function Index() {
               </span>
             </div>
 
-            <h1 className="font-display text-5xl leading-[1.05] text-foreground sm:text-7xl lg:text-8xl">
+            <h1 className="font-display text-5xl leading-[1.05] text-foreground [text-shadow:0_2px_18px_rgba(2,6,17,0.9),0_1px_3px_rgba(2,6,17,0.95)] sm:text-7xl lg:text-8xl">
               Your Business.
               <br />
               Your Story.
@@ -97,21 +109,36 @@ function Index() {
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {servicePages.map((s) => {
               const Icon = icons[s.slug as keyof typeof icons];
+              const hero = cardImages[s.slug];
               return (
                 <Link
                   key={s.slug}
                   to="/services/$slug"
                   params={{ slug: s.slug }}
-                  className="card-lift group rounded-2xl border border-border bg-surface p-8"
+                  className="card-lift group overflow-hidden rounded-2xl border border-border bg-surface"
                 >
-                  <Icon className="h-7 w-7 text-gold" />
-                  <h3 className="mt-6 font-display text-2xl text-foreground">{s.nav}</h3>
-                  <p className="mt-3 line-clamp-4 text-sm leading-relaxed text-muted-foreground">
-                    {s.lead}
-                  </p>
-                  <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold">
-                    {s.priceLabel} <ArrowRight className="h-3.5 w-3.5" />
-                  </span>
+                  {hero && (
+                    <div className="relative h-44 overflow-hidden">
+                      <img
+                        src={hero}
+                        alt={s.nav}
+                        className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent" />
+                      <div className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-gold/90 shadow-lg">
+                        <Icon className="h-5 w-5 text-primary-foreground" />
+                      </div>
+                    </div>
+                  )}
+                  <div className="p-8">
+                    <h3 className="font-display text-2xl text-foreground">{s.nav}</h3>
+                    <p className="mt-3 line-clamp-4 text-sm leading-relaxed text-muted-foreground">
+                      {s.lead}
+                    </p>
+                    <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold">
+                      {s.priceLabel} <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                  </div>
                 </Link>
               );
             })}

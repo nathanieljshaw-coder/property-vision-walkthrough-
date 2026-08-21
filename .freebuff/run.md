@@ -85,21 +85,51 @@ Camera style: COMPLETELY STILL — every shot is a fixed, locked-off view (no
 bob, no sway, no pan, no zoom); the tour moves between spaces purely through
 crossfades. Each video is 8 static views: exterior wide centre + exterior
 right + interior 1 (centre/left/right) + interior 2 (centre/left/right), at
-4.1s per shot with 0.4s crossfades = exactly 30.0s. Tune shots (frame count,
-views, fade timing) at the top of `.freebuff/generate-walkthroughs.sh`
-(`FRAMES=123` for 4.1s at 30fps; offsets are `n * (shot length − fade)`).
+4.1s per shot with 0.4s crossfades = exactly 30.0s.
 
-Gotcha: with `-loop 1` input and `zoompan d=1`, the `zoom` state resets every
-input frame, so `zoom+...` accumulation never happens — drive zoom from `on`
-directly or (as now) use constant z/x/y expressions for static shots.
+**AI-enhanced pipeline:** the source photos are first upscaled with
+Real-ESRGAN (x4 GAN) to synthesize real detail — see below — then the
+walkthrough generator uses `crop+scale` (not zoompan; much faster on static
+content) to produce each locked-off view at **3840×2160 (4K)** with
+`unsharp=5:5:0.5` and `crf 18`. ~70s encode per video. The montage encode
+~4 min. The About page's before/after "walkthrough" frame
+(`src/assets/portfolio/villa-sereno-walkthrough.jpg`) is extracted from the
+4K video — re-extract after regenerating. Tune shots (frame count, views,
+fade timing) at the top of `.freebuff/generate-walkthroughs.sh`
+(`FRAMES=123` for 4.1s at 30fps; offsets are `n * (shot length − fade)`).
 `src/content/portfolio.ts` points each project's `videoUrl` at
 `/walkthroughs/<slug>.mp4`.
+
+### Real-ESRGAN AI photo enhancement
+
+Source photos (~1600×900) are AI-upscaled with Real-ESRGAN x4 to synthesize
+real detail the originals lack. Two sets are cached:
+
+- `.freebuff/upscaled-8k/` — 7680×4320 (4.8× outscale, then resized)
+- `.freebuff/upscaled-4k/` — 3840×2160 (used by the generator)
+
+Both sets are JPEG quality-95. The generator reads from `upscaled-4k/`. To
+refresh after changing source photos:
+
+```sh
+./.freebuff/venv/bin/python .freebuff/upscale-photos.py   # ~45s per photo on MPS
+```
+
+The venv lives at `.freebuff/venv/` (Python 3.9, torch 2.8.0, MPS-accelerated).
+basicsr's `degradations.py` was patched for torchvision 0.23 compat (the old
+`functional_tensor` import moved to `transforms.functional`). If you recreate
+the venv, re-apply that sed fix.
+
+Model weights: `.freebuff/weights/RealESRGAN_x4plus.pth` (64 MB, downloaded
+from GitHub releases). The upscale script skips photos already present in the
+output directory.
 
 ### Home-page hero montage
 
 `public/walkthroughs/hero-montage.mp4` — the looping background video behind the
 home hero ("Your Business. Your Story. Your Experience.") — crossfades all six
-walkthroughs into one 178s clip. Rebuild it after regenerating the walkthroughs:
+4K walkthroughs into one ~178s clip. Rebuild it after regenerating the
+walkthroughs:
 
 ```sh
 ./.freebuff/build-hero-montage.sh

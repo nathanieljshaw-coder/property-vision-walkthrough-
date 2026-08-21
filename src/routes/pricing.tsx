@@ -120,16 +120,41 @@ function PricingPage() {
 
         <div className="mt-20">
           <h2 className="font-display text-3xl text-foreground">Individual Experiences</h2>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <p className="mt-3 max-w-2xl text-muted-foreground">
+            A focused experience for a single property, venue or course — built from the media you
+            already have.
+          </p>
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
             {servicePages.map((s) => (
               <div
                 key={s.slug}
-                className="flex flex-col rounded-2xl border border-border bg-surface p-6"
+                className="flex flex-col rounded-3xl border border-border bg-surface p-10"
               >
-                <h3 className="font-display text-xl text-foreground">{s.nav}</h3>
-                <p className="mt-1 text-sm font-semibold text-gold">{s.priceLabel}</p>
-                <div className="mt-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
+                  Individual Experience
+                </p>
+                <h3 className="mt-4 font-display text-3xl text-foreground">{s.nav}</h3>
+                <p className="mt-2 font-display text-5xl text-gold">{s.priceLabel}</p>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{s.lead}</p>
+
+                <ul className="mt-8 flex-1 space-y-3 text-sm text-muted-foreground">
+                  {s.features?.map((f) => (
+                    <li key={f} className="flex items-start gap-3">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-8 space-y-3">
                   <BuyButton slug={s.slug} label="Get Started" variant="outline" />
+                  <Link
+                    to="/services/$slug"
+                    params={{ slug: s.slug }}
+                    className="block text-center text-xs uppercase tracking-widest text-muted-foreground transition-colors hover:text-gold"
+                  >
+                    Full details
+                  </Link>
                 </div>
               </div>
             ))}
