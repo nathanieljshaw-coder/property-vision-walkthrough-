@@ -1,0 +1,163 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * LUMEN design system — deep navy + gold.
+ * All colors are oklch semantic tokens. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-deep: var(--gold-deep);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --background: oklch(0.13 0.012 265);
+  --foreground: oklch(0.93 0.006 265);
+  --surface: oklch(0.17 0.015 265);
+  --surface-raised: oklch(0.21 0.02 266);
+
+  --card: oklch(0.17 0.015 265);
+  --card-foreground: oklch(0.93 0.006 265);
+  --popover: oklch(0.17 0.015 265);
+  --popover-foreground: oklch(0.93 0.006 265);
+
+  --gold: oklch(0.74 0.083 82);
+  --gold-soft: oklch(0.85 0.072 84);
+  --gold-deep: oklch(0.6 0.078 79);
+
+  --primary: oklch(0.74 0.083 82);
+  --primary-foreground: oklch(0.15 0.014 265);
+  --secondary: oklch(0.24 0.022 266);
+  --secondary-foreground: oklch(0.93 0.006 265);
+  --muted: oklch(0.22 0.02 266);
+  --muted-foreground: oklch(0.72 0.014 265);
+  --accent: oklch(0.24 0.022 266);
+  --accent-foreground: oklch(0.85 0.072 84);
+  --destructive: oklch(0.6 0.21 25);
+  --destructive-foreground: oklch(0.97 0.01 265);
+  --border: oklch(0.74 0.083 82 / 22%);
+  --input: oklch(0.74 0.083 82 / 25%);
+  --ring: oklch(0.74 0.083 82 / 60%);
+}
+
+@theme inline {
+  --shadow-gold-glow: 0 0 25px -5px oklch(0.74 0.083 82 / 0.32);
+  --shadow-gold-glow-lg: 0 20px 50px -20px oklch(0.74 0.083 82 / 0.5);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--gold);
+    color: var(--primary-foreground);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--surface-raised);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--gold);
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+}
+
+@utility gold-text {
+  background: linear-gradient(
+    135deg,
+    var(--gold-soft) 0%,
+    var(--gold) 50%,
+    var(--gold-deep) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+@utility gold-fill {
+  background-image: linear-gradient(to right, var(--gold-soft), var(--gold-deep));
+}
+
+@utility glass-panel {
+  background: color-mix(in oklab, var(--background) 75%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+@utility bg-noise {
+  background-image: radial-gradient(
+    color-mix(in oklab, var(--gold) 12%, transparent) 1px,
+    transparent 0
+  );
+  background-size: 24px 24px;
+}
+
+@utility card-lift {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    border-color: color-mix(in oklab, var(--gold) 70%, transparent);
+    box-shadow: var(--shadow-gold-glow-lg);
+    transform: translateY(-4px);
+  }
+}
