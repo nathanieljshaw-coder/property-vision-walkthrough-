@@ -1,0 +1,4 @@
+{
+  "installCommand": "npm install && node node_modules/esbuild/install.js && node node_modules/ffmpeg-static/install.js",
+  "buildCommand": "npx vite build"
+}
