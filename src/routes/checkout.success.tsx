@@ -24,12 +24,20 @@ function SuccessPage() {
           Thank you. Your project is booked in and we'll email you shortly to gather your
           photographs, videos and brand details.
         </p>
-        <Link
-          to="/"
-          className="mt-8 inline-flex rounded-full gold-fill px-8 py-3.5 text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-gold-glow transition hover:brightness-110"
-        >
-          Back Home
-        </Link>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <Link
+            to="/dashboard"
+            className="inline-flex rounded-full gold-fill px-8 py-3.5 text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-gold-glow transition hover:brightness-110"
+          >
+            View Dashboard
+          </Link>
+          <Link
+            to="/"
+            className="inline-flex rounded-full border border-border px-8 py-3.5 text-xs font-bold uppercase tracking-widest text-foreground transition-colors hover:border-gold hover:text-gold"
+          >
+            Back Home
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -21,6 +21,7 @@ fi
 
 WT="$ROOT/public/walkthroughs"
 OUT="$WT/hero-montage.mp4"
+TMP="$WT/.hero-montage.new.mp4"
 
 XFADE=0.4
 # xfade offsets: n * (shot length - fade) = n * 29.6  (6 shots -> 178.0s)
@@ -46,6 +47,7 @@ echo "== hero montage (4K) =="
     [v04][5:v]xfade=transition=fade:duration=$XFADE:offset=$O5[vout];
     [vout]unsharp=5:5:0.6:5:5:0.0[vfinal]
   " \
-  -map "[vfinal]" -c:v libx264 -preset faster -crf 20 -pix_fmt yuv420p \
-  -movflags +faststart -an "$OUT" -loglevel error
+  -map "[vfinal]" -c:v libx264 -preset veryfast -crf 27 -pix_fmt yuv420p \
+  -movflags +faststart -an "$TMP" -loglevel error
+mv -f "$TMP" "$OUT"
 echo "  -> $OUT"

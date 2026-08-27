@@ -231,6 +231,14 @@ function RootComponent() {
           });
       });
     }
+
+    // Capture the PWA install prompt
+    const handler = (e: Event) => {
+      e.preventDefault();
+      (window as any).deferredPrompt = e;
+    };
+    window.addEventListener('beforeinstallprompt', handler);
+    return () => window.removeEventListener('beforeinstallprompt', handler);
   }, []);
 
   return (

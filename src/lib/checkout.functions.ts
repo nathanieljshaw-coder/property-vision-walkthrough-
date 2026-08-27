@@ -8,6 +8,8 @@ const schema = z.object({
   slug: z.string().min(1),
   origin: z.string().url(),
   email: z.string().email().optional(),
+  phone: z.string().min(1).optional(),
+  whatsappOptIn: z.boolean().optional(),
   addonIds: z.array(z.string()).optional(),
   photoCount: z.number().int().min(0).max(1000).optional(),
 });
@@ -25,6 +27,8 @@ export const startCheckout = createServerFn({ method: "POST" })
       amount: offering.amount + addonAmount(addons),
       origin: data.origin,
       email: data.email,
+      phone: data.phone,
+      whatsappOptIn: data.whatsappOptIn,
       addonIds: addons,
       photoCount: data.photoCount,
     });

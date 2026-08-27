@@ -6,17 +6,17 @@ import { BuyButton } from "@/components/buy-button";
 export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
-      { title: "Pricing & Packages | LUMEN Digital Experiences" },
+      { title: "Pricing & Websites & More | LUMEN Digital Experiences" },
       {
         name: "description",
         content:
           "Simple, honest pricing for websites and cinematic walkthroughs. Professional websites from £399, complete digital experiences from £1,499.",
       },
-      { property: "og:title", content: "Pricing & Packages | LUMEN Digital Experiences" },
+      { property: "og:title", content: "Pricing & Websites & More | LUMEN Digital Experiences" },
       {
         property: "og:description",
         content:
-          "Websites and cinematic walkthroughs from £199. Pay securely online and we'll start your project.",
+          "Websites and cinematic walkthroughs from £100. Pay securely online and we'll start your project.",
       },
     ],
   }),
@@ -51,12 +51,14 @@ const features: Record<string, string[]> = {
 };
 
 const addOns = [
-  { name: "Cinematic Walkthrough", price: "From £99" },
-  { name: "Additional Property", price: "From £149" },
-  { name: "Custom Branding", price: "From £49" },
-  { name: "Website Maintenance", price: "From £25/mo" },
-  { name: "Custom Domain", price: "From £20/yr" },
-  { name: "Bespoke Experience", price: "On request" },
+  { name: "Rush Delivery", price: "£50" },
+  { name: "Extra Room Walkthrough", price: "£75" },
+  { name: "Drone Footage", price: "£75" },
+  { name: "Unlimited Revisions", price: "£75" },
+  { name: "Extended Walkthrough", price: "£75" },
+  { name: "Customizable Music", price: "£75" },
+  { name: "Extra Website Page", price: "£75" },
+  { name: "Add a Cinematic Walkthrough", price: "£75" },
 ];
 
 function PricingPage() {
@@ -64,12 +66,12 @@ function PricingPage() {
     <div className="pt-32 pb-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">Packages</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">Websites & More</p>
           <h1 className="mt-4 font-display text-5xl text-foreground sm:text-6xl">
             Simple, Honest Pricing
           </h1>
           <p className="mt-6 text-lg text-muted-foreground">
-            Choose a package and pay securely with Stripe. We'll be in touch straight away to start
+            Choose a website and pay securely with Stripe. We'll be in touch straight away to start
             your project.
           </p>
         </div>

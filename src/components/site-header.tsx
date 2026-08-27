@@ -1,18 +1,33 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 const links = [
   { to: "/", label: "Home" },
   { to: "/services", label: "Services" },
-  { to: "/portfolio", label: "Portfolio" },
+  { to: "/portfolio", label: "Demo" },
   { to: "/about", label: "About" },
+  { to: "/how-it-works", label: "How It Works" },
   { to: "/pricing", label: "Pricing" },
+  { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
+  { to: "/dashboard", label: "Dashboard" },
 ] as const;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/dashboard", { credentials: "include" })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data?.user?.email === "nathaniel.j.shaw@outlook.com") {
+          setIsAdmin(true);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   return (
     <>
@@ -42,6 +57,20 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex items-center gap-3">
+            <Link
+              to="/login"
+              className="hidden text-xs font-medium uppercase tracking-wider text-muted-foreground transition-colors hover:text-gold sm:inline-flex"
+            >
+              Dashboard
+            </Link>
+            {isAdmin && (
+              <Link
+                to="/admin"
+                className="hidden rounded-full border border-gold/30 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-gold transition-colors hover:bg-gold/10 sm:inline-flex"
+              >
+                Admin
+              </Link>
+            )}
             <Link
               to="/pricing"
               className="hidden rounded-full gold-fill px-6 py-2.5 text-xs font-semibold uppercase tracking-widest text-primary-foreground shadow-gold-glow transition hover:brightness-110 sm:inline-flex"
@@ -76,6 +105,15 @@ export function SiteHeader() {
                 {l.label}
               </Link>
             ))}
+            {isAdmin && (
+              <Link
+                to="/admin"
+                onClick={() => setOpen(false)}
+                className="font-display text-2xl tracking-wider text-gold transition-colors hover:text-gold/80"
+              >
+                Admin
+              </Link>
+            )}
             <div className="border-t border-border pt-6">
               <Link
                 to="/pricing"

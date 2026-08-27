@@ -78,6 +78,40 @@ export const portfolioProjects: PortfolioProject[] = [
     ],
   },
   {
+    slug: "villa-sereno-full",
+    name: "Villa Sereno — Full Estate Tour",
+    type: "Holiday Rental",
+    note: "Three-minute cinematic tour through every room of the villa.",
+    location: "Costa Blanca, Spain",
+    tagline: "Every room, one continuous tour",
+    intro:
+      "A full three-minute walkthrough of Villa Sereno — from the exterior reveal through all twenty-eight rooms: every bedroom, both bathrooms, the kitchens, dining room, bars, libraries, pool, gym, court, theatre, spa and more.",
+    heroImage: villaHero,
+    videoUrl: "/walkthroughs/villa-sereno-full.mp4",
+    navItems: ["The Villa", "Gallery", "Rates", "Book"],
+    highlights: [
+      { title: "Sleeps 10", body: "Five en-suite bedrooms across two floors, each with sea or garden views." },
+      { title: "Heated Infinity Pool", body: "Twelve metres of pool, lit at night, with shaded loungers and an outdoor kitchen." },
+      { title: "Ten Minutes To The Coast", body: "Quiet hillside setting with beaches, marinas and restaurants a short drive away." },
+    ],
+    gallery: [
+      { src: villa1, alt: "Master bedroom with arched sea-view window" },
+      { src: villa2, alt: "Open-plan kitchen and shaded dining terrace" },
+    ],
+    offers: [
+      { name: "Low Season", detail: "Nov – Mar · 3 night minimum", price: "£420 / night" },
+      { name: "Shoulder Season", detail: "Apr – Jun, Sep – Oct · 5 night minimum", price: "£680 / night" },
+      { name: "Peak Summer", detail: "Jul – Aug · 7 night minimum", price: "£950 / night" },
+    ],
+    ctaLabel: "Check Availability",
+    ctaNote: "Direct booking · no platform fees",
+    delivered: [
+      "Three-minute full-property tour across all twenty-eight rooms",
+      "Cinematic drone reveal and gentle room-by-room camera moves",
+      "Built entirely from the owner's existing photography",
+    ],
+  },
+  {
     slug: "grand-alpine",
     name: "The Grand Alpine Hotel",
     type: "Hotel",
@@ -177,6 +211,40 @@ export const portfolioProjects: PortfolioProject[] = [
       "Cinematic venue walkthrough of the dining room and bar",
       "Brand-led website with menu, reservations and private dining enquiries",
       "Photography direction and content written for the restaurant",
+    ],
+  },
+  {
+    slug: "aura-dining-full",
+    name: "Aura Fine Dining — Full Walkthrough",
+    type: "Restaurant",
+    note: "Two-minute cinematic tour through the dining room and bar.",
+    location: "Edinburgh, Scotland",
+    tagline: "The room, one continuous tour",
+    intro:
+      "A full two-minute walkthrough of Aura — from the entrance through the candlelit dining room and across the bar, in one continuous cinematic camera move.",
+    heroImage: auraHero,
+    videoUrl: "/walkthroughs/aura-dining-full.mp4",
+    navItems: ["Menu", "The Room", "Bar", "Reserve"],
+    highlights: [
+      { title: "Seasonal Tasting Menu", body: "Seven courses built around Scottish producers, changed every six weeks." },
+      { title: "Twelve Covers", body: "An intimate room where every table has a view of the pass." },
+      { title: "The Bar", body: "Aperitifs and low-intervention wine from six until late, walk-ins welcome." },
+    ],
+    gallery: [
+      { src: aura1, alt: "Plated tasting menu course on dark ceramic" },
+      { src: aura2, alt: "Backlit cocktail bar with brass shelving" },
+    ],
+    offers: [
+      { name: "Tasting Menu", detail: "Seven courses · 2.5 hours", price: "£95 pp" },
+      { name: "Wine Pairing", detail: "Six glasses selected by the sommelier", price: "£65 pp" },
+      { name: "Private Dining", detail: "Full room hire · up to 12 guests", price: "from £1,400" },
+    ],
+    ctaLabel: "Reserve A Table",
+    ctaNote: "Bookings open eight weeks ahead",
+    delivered: [
+      "Two-minute full walkthrough of the dining room and bar",
+      "One continuous cinematic camera move through the whole space",
+      "Built from the owner's own cinematic footage",
     ],
   },
   {

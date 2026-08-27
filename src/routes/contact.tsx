@@ -145,7 +145,7 @@ function ContactPage() {
                   name="budget"
                   className="mt-2 w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none focus:border-gold"
                 >
-                  <option>£199 - £500</option>
+                  <option>£100 - £500</option>
                   <option>£500 - £1,000</option>
                   <option>£1,000 - £2,500</option>
                   <option>£2,500+</option>

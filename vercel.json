@@ -1,6 +1,0 @@
-{
-  "installCommand": "npm install",
-  "buildCommand": "npx vite build",
-  "framework": null,
-  "outputDirectory": ".output"
-}

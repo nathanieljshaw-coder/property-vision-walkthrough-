@@ -1,0 +1,191 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "test@lumen.com",
+      "name": "Test User",
+      "password_hash": "$2b$12$466gQ0aHP597oTls6IXIle/v81O7.THpWgFe36Kk9l5T5/B5SXhsC",
+      "created_at": "2026-08-23T13:34:57.361Z",
+      "phone": "07700 900123"
+    },
+    {
+      "id": 2,
+      "email": "nath@lumen.com",
+      "name": "Nathaniel Shaw",
+      "password_hash": "$2b$12$BILnftjZbmCCOkZ/qEXMUOJ7XFw1UhrbkriEl2fCiVKWzN4dHsEkS",
+      "created_at": "2026-08-23T13:40:54.535Z"
+    },
+    {
+      "id": 3,
+      "email": "nathaniel.j.shaw@outlook.com",
+      "name": "Nathaniel Shaw",
+      "password_hash": "$2b$12$A9QT3YxtHq8PP3dV9fHuluB6c.P2qN1wZioW2xU5h.qfaof7xZl5a",
+      "created_at": "2026-08-23T13:57:16.146Z"
+    },
+    {
+      "id": 4,
+      "email": "nathaniel.jt.shaw@outlook.com",
+      "name": "Nathaniel Shaw",
+      "password_hash": "$2a$10$placeholder_hash_for_test_user",
+      "phone": "07700 900123",
+      "created_at": "2026-08-23T16:07:04.743077"
+    },
+    {
+      "id": 5,
+      "email": "approve.test@lumen.com",
+      "name": "Approve Test",
+      "password_hash": "$2b$12$3ov2gFes7yMQHc6rLPPeyu7r09i58BmxEspA9Ihm..8FqaukLRkXy",
+      "phone": "07700 900456",
+      "created_at": "2026-08-24T10:31:31.270Z"
+    }
+  ],
+  "sessions": [
+    {
+      "token": "e15051c4-9827-4f58-8d91-009ceed8cbd3",
+      "user_id": 1,
+      "expires_at": "2026-09-22T13:34:57.362Z"
+    },
+    {
+      "token": "15927fd3-67da-4b27-87a0-ab295b77c193",
+      "user_id": 2,
+      "expires_at": "2026-09-22T13:40:54.535Z"
+    },
+    {
+      "token": "c540654e-ef85-4d28-bb8f-4e43bb2dd166",
+      "user_id": 3,
+      "expires_at": "2026-09-22T14:04:41.094Z"
+    },
+    {
+      "token": "399599e3-6500-4595-8267-752aa88c037d",
+      "user_id": 3,
+      "expires_at": "2026-09-22T14:14:29.874Z"
+    },
+    {
+      "token": "76ffaa94-cc43-4461-b921-c8f1e36c5100",
+      "user_id": 3,
+      "expires_at": "2026-09-22T14:33:59.121Z"
+    },
+    {
+      "token": "a498b0d1-7966-47b8-8776-61d7d26b5885",
+      "user_id": 5,
+      "expires_at": "2026-09-23T10:31:31.271Z"
+    },
+    {
+      "token": "0a9001a0-7513-4cdd-82ba-e5096629b6f9",
+      "user_id": 3,
+      "expires_at": "2030-01-01T00:00:00.000Z"
+    },
+    {
+      "token": "e1d7582d-75db-4c61-9369-1ec52f08112f",
+      "user_id": 3,
+      "expires_at": "2026-09-24T11:08:13.211Z"
+    },
+    {
+      "token": "73c895c2-bae6-46c7-b504-c66b8d8e0113",
+      "user_id": 3,
+      "expires_at": "2026-09-24T11:08:22.212Z"
+    },
+    {
+      "token": "a9d08161-5954-408c-85b7-475ee02f84f9",
+      "user_id": 3,
+      "expires_at": "2026-09-24T11:10:03.585Z"
+    },
+    {
+      "token": "11b6e459-078c-4fd5-98e7-3dc3b15127f9",
+      "user_id": 3,
+      "expires_at": "2026-08-26T11:24:55.122Z"
+    },
+    {
+      "token": "a9f3b4ee-16d6-487b-af87-7526db2137d2",
+      "user_id": 3,
+      "expires_at": "2026-09-24T11:25:00.652Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "stripe_session_id": "cs_test_123",
+      "slug": "airbnb",
+      "product_name": "Airbnb & Holiday Rentals Walkthrough",
+      "amount": 19900,
+      "status": "in_progress",
+      "walkthrough_status": "review",
+      "walkthrough_url": "https://demo.lumen.co.uk/villa-sereno",
+      "notes": null,
+      "created_at": "2026-08-23T14:00:00.000Z",
+      "updated_at": "2026-08-23T14:52:14.995Z",
+      "whatsapp_opt_in": true
+    },
+    {
+      "id": 2,
+      "user_id": 4,
+      "stripe_session_id": "cs_test_demo_order_002",
+      "slug": "airbnb",
+      "product_name": "Property Experience — Airbnb & Holiday Rentals",
+      "amount": 19900,
+      "phone": "07700 900123",
+      "whatsapp_opt_in": true,
+      "status": "in_progress",
+      "walkthrough_status": "in_progress",
+      "walkthrough_url": null,
+      "notes": "Demo order so you can see the flow.",
+      "created_at": "2026-08-23T16:07:04.743095",
+      "updated_at": "2026-08-23T15:55:11.450Z",
+      "auto_email": true
+    },
+    {
+      "id": 3,
+      "user_id": 4,
+      "slug": "airbnb-holiday-rentals",
+      "product_name": "Property Experience — Airbnb & Holiday Rentals",
+      "amount": 19900,
+      "phone": "07700 900123",
+      "whatsapp_opt_in": true,
+      "auto_email": true,
+      "stripe_session_id": "cs_test_demo_1787565239",
+      "status": "paid",
+      "walkthrough_status": "not_started",
+      "walkthrough_url": null,
+      "notes": null,
+      "created_at": "2026-08-24T09:53:59.425Z",
+      "updated_at": "2026-08-24T09:53:59.425Z"
+    },
+    {
+      "id": 4,
+      "user_id": 5,
+      "slug": "airbnb",
+      "product_name": "Property Experience — Airbnb & Holiday Rentals",
+      "amount": 19900,
+      "phone": "07700 900456",
+      "whatsapp_opt_in": false,
+      "auto_email": true,
+      "stripe_session_id": "cs_test_agreed_paid",
+      "status": "paid",
+      "approval_status": "agreed",
+      "walkthrough_status": "review",
+      "walkthrough_url": "/walkthroughs/villa-sereno.mp4",
+      "notes": null,
+      "created_at": "2026-08-24T10:31:31.271Z",
+      "updated_at": "2026-08-24T10:32:11.189Z"
+    },
+    {
+      "id": 5,
+      "user_id": 5,
+      "stripe_session_id": null,
+      "slug": "airbnb",
+      "product_name": "Property Experience — Airbnb & Holiday Rentals (2nd)",
+      "amount": 19900,
+      "phone": "07700 900456",
+      "whatsapp_opt_in": true,
+      "auto_email": true,
+      "status": "pending",
+      "approval_status": "declined",
+      "walkthrough_status": "review",
+      "walkthrough_url": "/walkthroughs/grand-alpine.mp4",
+      "notes": "Customer declined the demo.",
+      "created_at": "2026-08-24T11:00:00.000Z",
+      "updated_at": "2026-08-24T10:32:21.740Z"
+    }
+  ]
+}

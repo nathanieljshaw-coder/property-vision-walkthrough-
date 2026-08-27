@@ -41,3 +41,4 @@ dist-ssr
 *.mp4
 !public/walkthroughs/*.mp4
 public/walkthroughs/hero-montage-4k.mp4
+.vercel

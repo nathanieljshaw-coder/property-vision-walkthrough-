@@ -36,23 +36,38 @@ function ServicesPage() {
         </p>
 
         <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {servicePages.map((s) => (
-            <Link
-              key={s.slug}
-              to="/services/$slug"
-              params={{ slug: s.slug }}
-              className="card-lift rounded-2xl border border-border bg-surface p-10"
-            >
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
-                {s.priceLabel}
-              </p>
-              <h2 className="mt-4 font-display text-3xl text-foreground">{s.nav}</h2>
-              <p className="mt-4 leading-relaxed text-muted-foreground">{s.lead}</p>
-              <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold">
-                Learn more <ArrowRight className="h-3.5 w-3.5" />
-              </span>
-            </Link>
-          ))}
+          {servicePages.map((s) => {
+            const card = (
+              <>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
+                  {s.priceLabel}
+                </p>
+                <h2 className="mt-4 font-display text-3xl text-foreground">{s.nav}</h2>
+                <p className="mt-4 leading-relaxed text-muted-foreground">{s.lead}</p>
+                <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold">
+                  Learn more <ArrowRight className="h-3.5 w-3.5" />
+                </span>
+              </>
+            );
+            return s.slug === "websites" ? (
+              <Link
+                key={s.slug}
+                to="/pricing"
+                className="card-lift rounded-2xl border border-border bg-surface p-10"
+              >
+                {card}
+              </Link>
+            ) : (
+              <Link
+                key={s.slug}
+                to="/services/$slug"
+                params={{ slug: s.slug }}
+                className="card-lift rounded-2xl border border-border bg-surface p-10"
+              >
+                {card}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </div>

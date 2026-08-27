@@ -33,7 +33,7 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <h2 className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Packages</h2>
+          <h2 className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Websites & More</h2>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
             {packagePages.map((s) => (
               <li key={s.slug}>
@@ -58,8 +58,13 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
+              <Link to="/how-it-works" className="transition-colors hover:text-gold">
+                How It Works
+              </Link>
+            </li>
+            <li>
               <Link to="/portfolio" className="transition-colors hover:text-gold">
-                Portfolio
+                Demo
               </Link>
             </li>
             <li>
@@ -68,8 +73,28 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
+              <Link to="/faq" className="transition-colors hover:text-gold">
+                FAQ
+              </Link>
+            </li>
+            <li>
               <Link to="/contact" className="transition-colors hover:text-gold">
                 Contact
+              </Link>
+            </li>
+            <li>
+              <Link to="/dashboard" className="transition-colors hover:text-gold">
+                Client Dashboard
+              </Link>
+            </li>
+            <li>
+              <Link to="/terms" className="transition-colors hover:text-gold">
+                Terms &amp; Conditions
+              </Link>
+            </li>
+            <li>
+              <Link to="/privacy" className="transition-colors hover:text-gold">
+                Privacy Policy
               </Link>
             </li>
           </ul>

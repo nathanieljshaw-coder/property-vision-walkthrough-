@@ -4,8 +4,12 @@ type CheckoutInput = {
   amount: number;
   origin: string;
   email?: string | undefined;
+  phone?: string | undefined;
+  whatsappOptIn?: boolean | undefined;
   addonIds?: string[] | undefined;
   photoCount?: number | undefined;
+  /** When set, the completed checkout marks THIS existing order paid (pay-after-approval flow). */
+  orderId?: number | undefined;
 };
 
 export async function createStripeCheckoutSession(input: CheckoutInput) {
@@ -23,6 +27,9 @@ export async function createStripeCheckoutSession(input: CheckoutInput) {
   params.set("metadata[slug]", input.slug);
   if (input.addonIds?.length) params.set("metadata[addons]", input.addonIds.join(","));
   if (input.photoCount != null) params.set("metadata[photo_count]", String(input.photoCount));
+  if (input.orderId != null) params.set("metadata[order_id]", String(input.orderId));
+  if (input.phone) params.set("metadata[phone]", input.phone);
+  if (input.whatsappOptIn != null) params.set("metadata[whatsapp_opt_in]", String(input.whatsappOptIn));
   if (input.email) params.set("customer_email", input.email);
 
   const res = await fetch("https://api.stripe.com/v1/checkout/sessions", {

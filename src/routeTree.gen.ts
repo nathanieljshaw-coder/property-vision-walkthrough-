@@ -11,8 +11,34 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AccountRouteImport } from './routes/account'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as InstallRouteImport } from './routes/install'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as UploadImagesRouteImport } from './routes/upload-images'
+import { Route as ApiAccountRouteImport } from './routes/api/account'
+import { Route as ApiDashboardRouteImport } from './routes/api/dashboard'
+import { Route as ApiEmailPreviewRouteImport } from './routes/api/email-preview'
+import { Route as ApiForgotPasswordRouteImport } from './routes/api/forgot-password'
+import { Route as ApiImageRequestsRouteImport } from './routes/api/image-requests'
+import { Route as ApiLoginRouteImport } from './routes/api/login'
+import { Route as ApiLogoutRouteImport } from './routes/api/logout'
+import { Route as ApiOrderDecisionRouteImport } from './routes/api/order-decision'
+import { Route as ApiOrderPlaceRouteImport } from './routes/api/order-place'
+import { Route as ApiRegisterRouteImport } from './routes/api/register'
+import { Route as ApiResetPasswordRouteImport } from './routes/api/reset-password'
+import { Route as ApiUploadImagesRouteImport } from './routes/api/upload-images'
+import { Route as ApiWebhookRouteImport } from './routes/api/webhook'
 import { Route as CheckoutSlugRouteImport } from './routes/checkout.$slug'
 import { Route as CheckoutCancelledRouteImport } from './routes/checkout.cancelled'
 import { Route as CheckoutSuccessRouteImport } from './routes/checkout.success'
@@ -20,6 +46,13 @@ import { Route as PackagesSlugRouteImport } from './routes/packages.$slug'
 import { Route as PortfolioIndexRouteImport } from './routes/portfolio.index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
+import { Route as ApiAdminOrdersRouteImport } from './routes/api/admin/orders'
+import { Route as ApiAdminRequestImagesRouteImport } from './routes/api/admin/request-images'
+import { Route as ApiAdminSendEmailRouteImport } from './routes/api/admin/send-email'
+import { Route as ApiAdminUploadRouteImport } from './routes/api/admin/upload'
+import { Route as ApiAdminWalkthroughsRouteImport } from './routes/api/admin/walkthroughs'
+import { Route as ApiAuthGoogleRouteImport } from './routes/api/auth/google'
+import { Route as ApiAuthGoogleCallbackRouteImport } from './routes/api/auth/google/callback'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -31,14 +64,144 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccountRoute = AccountRouteImport.update({
+  id: '/account',
+  path: '/account',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InstallRoute = InstallRouteImport.update({
+  id: '/install',
+  path: '/install',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UploadImagesRoute = UploadImagesRouteImport.update({
+  id: '/upload-images',
+  path: '/upload-images',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAccountRoute = ApiAccountRouteImport.update({
+  id: '/api/account',
+  path: '/api/account',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiDashboardRoute = ApiDashboardRouteImport.update({
+  id: '/api/dashboard',
+  path: '/api/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiEmailPreviewRoute = ApiEmailPreviewRouteImport.update({
+  id: '/api/email-preview',
+  path: '/api/email-preview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiForgotPasswordRoute = ApiForgotPasswordRouteImport.update({
+  id: '/api/forgot-password',
+  path: '/api/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiImageRequestsRoute = ApiImageRequestsRouteImport.update({
+  id: '/api/image-requests',
+  path: '/api/image-requests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiLoginRoute = ApiLoginRouteImport.update({
+  id: '/api/login',
+  path: '/api/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiLogoutRoute = ApiLogoutRouteImport.update({
+  id: '/api/logout',
+  path: '/api/logout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiOrderDecisionRoute = ApiOrderDecisionRouteImport.update({
+  id: '/api/order-decision',
+  path: '/api/order-decision',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiOrderPlaceRoute = ApiOrderPlaceRouteImport.update({
+  id: '/api/order-place',
+  path: '/api/order-place',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiRegisterRoute = ApiRegisterRouteImport.update({
+  id: '/api/register',
+  path: '/api/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiResetPasswordRoute = ApiResetPasswordRouteImport.update({
+  id: '/api/reset-password',
+  path: '/api/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiUploadImagesRoute = ApiUploadImagesRouteImport.update({
+  id: '/api/upload-images',
+  path: '/api/upload-images',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiWebhookRoute = ApiWebhookRouteImport.update({
+  id: '/api/webhook',
+  path: '/api/webhook',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CheckoutSlugRoute = CheckoutSlugRouteImport.update({
@@ -76,12 +239,73 @@ const ServicesSlugRoute = ServicesSlugRouteImport.update({
   path: '/services/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAdminOrdersRoute = ApiAdminOrdersRouteImport.update({
+  id: '/api/admin/orders',
+  path: '/api/admin/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminRequestImagesRoute = ApiAdminRequestImagesRouteImport.update({
+  id: '/api/admin/request-images',
+  path: '/api/admin/request-images',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminSendEmailRoute = ApiAdminSendEmailRouteImport.update({
+  id: '/api/admin/send-email',
+  path: '/api/admin/send-email',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminUploadRoute = ApiAdminUploadRouteImport.update({
+  id: '/api/admin/upload',
+  path: '/api/admin/upload',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminWalkthroughsRoute = ApiAdminWalkthroughsRouteImport.update({
+  id: '/api/admin/walkthroughs',
+  path: '/api/admin/walkthroughs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthGoogleRoute = ApiAuthGoogleRouteImport.update({
+  id: '/api/auth/google',
+  path: '/api/auth/google',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthGoogleCallbackRoute = ApiAuthGoogleCallbackRouteImport.update({
+  id: '/callback',
+  path: '/callback',
+  getParentRoute: () => ApiAuthGoogleRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/account': typeof AccountRoute
+  '/admin': typeof AdminRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
+  '/faq': typeof FaqRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/install': typeof InstallRoute
+  '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/terms': typeof TermsRoute
+  '/upload-images': typeof UploadImagesRoute
+  '/api/account': typeof ApiAccountRoute
+  '/api/dashboard': typeof ApiDashboardRoute
+  '/api/email-preview': typeof ApiEmailPreviewRoute
+  '/api/forgot-password': typeof ApiForgotPasswordRoute
+  '/api/image-requests': typeof ApiImageRequestsRoute
+  '/api/login': typeof ApiLoginRoute
+  '/api/logout': typeof ApiLogoutRoute
+  '/api/order-decision': typeof ApiOrderDecisionRoute
+  '/api/order-place': typeof ApiOrderPlaceRoute
+  '/api/register': typeof ApiRegisterRoute
+  '/api/reset-password': typeof ApiResetPasswordRoute
+  '/api/upload-images': typeof ApiUploadImagesRoute
+  '/api/webhook': typeof ApiWebhookRoute
   '/checkout/$slug': typeof CheckoutSlugRoute
   '/checkout/cancelled': typeof CheckoutCancelledRoute
   '/checkout/success': typeof CheckoutSuccessRoute
@@ -89,12 +313,45 @@ export interface FileRoutesByFullPath {
   '/services/$slug': typeof ServicesSlugRoute
   '/portfolio/': typeof PortfolioIndexRoute
   '/services/': typeof ServicesIndexRoute
+  '/api/admin/orders': typeof ApiAdminOrdersRoute
+  '/api/admin/request-images': typeof ApiAdminRequestImagesRoute
+  '/api/admin/send-email': typeof ApiAdminSendEmailRoute
+  '/api/admin/upload': typeof ApiAdminUploadRoute
+  '/api/admin/walkthroughs': typeof ApiAdminWalkthroughsRoute
+  '/api/auth/google': typeof ApiAuthGoogleRouteWithChildren
+  '/api/auth/google/callback': typeof ApiAuthGoogleCallbackRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/account': typeof AccountRoute
+  '/admin': typeof AdminRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
+  '/faq': typeof FaqRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/install': typeof InstallRoute
+  '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/terms': typeof TermsRoute
+  '/upload-images': typeof UploadImagesRoute
+  '/api/account': typeof ApiAccountRoute
+  '/api/dashboard': typeof ApiDashboardRoute
+  '/api/email-preview': typeof ApiEmailPreviewRoute
+  '/api/forgot-password': typeof ApiForgotPasswordRoute
+  '/api/image-requests': typeof ApiImageRequestsRoute
+  '/api/login': typeof ApiLoginRoute
+  '/api/logout': typeof ApiLogoutRoute
+  '/api/order-decision': typeof ApiOrderDecisionRoute
+  '/api/order-place': typeof ApiOrderPlaceRoute
+  '/api/register': typeof ApiRegisterRoute
+  '/api/reset-password': typeof ApiResetPasswordRoute
+  '/api/upload-images': typeof ApiUploadImagesRoute
+  '/api/webhook': typeof ApiWebhookRoute
   '/checkout/$slug': typeof CheckoutSlugRoute
   '/checkout/cancelled': typeof CheckoutCancelledRoute
   '/checkout/success': typeof CheckoutSuccessRoute
@@ -102,13 +359,46 @@ export interface FileRoutesByTo {
   '/services/$slug': typeof ServicesSlugRoute
   '/portfolio': typeof PortfolioIndexRoute
   '/services': typeof ServicesIndexRoute
+  '/api/admin/orders': typeof ApiAdminOrdersRoute
+  '/api/admin/request-images': typeof ApiAdminRequestImagesRoute
+  '/api/admin/send-email': typeof ApiAdminSendEmailRoute
+  '/api/admin/upload': typeof ApiAdminUploadRoute
+  '/api/admin/walkthroughs': typeof ApiAdminWalkthroughsRoute
+  '/api/auth/google': typeof ApiAuthGoogleRouteWithChildren
+  '/api/auth/google/callback': typeof ApiAuthGoogleCallbackRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/account': typeof AccountRoute
+  '/admin': typeof AdminRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
+  '/faq': typeof FaqRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/install': typeof InstallRoute
+  '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/terms': typeof TermsRoute
+  '/upload-images': typeof UploadImagesRoute
+  '/api/account': typeof ApiAccountRoute
+  '/api/dashboard': typeof ApiDashboardRoute
+  '/api/email-preview': typeof ApiEmailPreviewRoute
+  '/api/forgot-password': typeof ApiForgotPasswordRoute
+  '/api/image-requests': typeof ApiImageRequestsRoute
+  '/api/login': typeof ApiLoginRoute
+  '/api/logout': typeof ApiLogoutRoute
+  '/api/order-decision': typeof ApiOrderDecisionRoute
+  '/api/order-place': typeof ApiOrderPlaceRoute
+  '/api/register': typeof ApiRegisterRoute
+  '/api/reset-password': typeof ApiResetPasswordRoute
+  '/api/upload-images': typeof ApiUploadImagesRoute
+  '/api/webhook': typeof ApiWebhookRoute
   '/checkout/$slug': typeof CheckoutSlugRoute
   '/checkout/cancelled': typeof CheckoutCancelledRoute
   '/checkout/success': typeof CheckoutSuccessRoute
@@ -116,14 +406,47 @@ export interface FileRoutesById {
   '/services/$slug': typeof ServicesSlugRoute
   '/portfolio/': typeof PortfolioIndexRoute
   '/services/': typeof ServicesIndexRoute
+  '/api/admin/orders': typeof ApiAdminOrdersRoute
+  '/api/admin/request-images': typeof ApiAdminRequestImagesRoute
+  '/api/admin/send-email': typeof ApiAdminSendEmailRoute
+  '/api/admin/upload': typeof ApiAdminUploadRoute
+  '/api/admin/walkthroughs': typeof ApiAdminWalkthroughsRoute
+  '/api/auth/google': typeof ApiAuthGoogleRouteWithChildren
+  '/api/auth/google/callback': typeof ApiAuthGoogleCallbackRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/account'
+    | '/admin'
     | '/contact'
+    | '/dashboard'
+    | '/faq'
+    | '/forgot-password'
+    | '/how-it-works'
+    | '/install'
+    | '/login'
     | '/pricing'
+    | '/privacy'
+    | '/register'
+    | '/reset-password'
+    | '/terms'
+    | '/upload-images'
+    | '/api/account'
+    | '/api/dashboard'
+    | '/api/email-preview'
+    | '/api/forgot-password'
+    | '/api/image-requests'
+    | '/api/login'
+    | '/api/logout'
+    | '/api/order-decision'
+    | '/api/order-place'
+    | '/api/register'
+    | '/api/reset-password'
+    | '/api/upload-images'
+    | '/api/webhook'
     | '/checkout/$slug'
     | '/checkout/cancelled'
     | '/checkout/success'
@@ -131,12 +454,45 @@ export interface FileRouteTypes {
     | '/services/$slug'
     | '/portfolio/'
     | '/services/'
+    | '/api/admin/orders'
+    | '/api/admin/request-images'
+    | '/api/admin/send-email'
+    | '/api/admin/upload'
+    | '/api/admin/walkthroughs'
+    | '/api/auth/google'
+    | '/api/auth/google/callback'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/account'
+    | '/admin'
     | '/contact'
+    | '/dashboard'
+    | '/faq'
+    | '/forgot-password'
+    | '/how-it-works'
+    | '/install'
+    | '/login'
     | '/pricing'
+    | '/privacy'
+    | '/register'
+    | '/reset-password'
+    | '/terms'
+    | '/upload-images'
+    | '/api/account'
+    | '/api/dashboard'
+    | '/api/email-preview'
+    | '/api/forgot-password'
+    | '/api/image-requests'
+    | '/api/login'
+    | '/api/logout'
+    | '/api/order-decision'
+    | '/api/order-place'
+    | '/api/register'
+    | '/api/reset-password'
+    | '/api/upload-images'
+    | '/api/webhook'
     | '/checkout/$slug'
     | '/checkout/cancelled'
     | '/checkout/success'
@@ -144,12 +500,45 @@ export interface FileRouteTypes {
     | '/services/$slug'
     | '/portfolio'
     | '/services'
+    | '/api/admin/orders'
+    | '/api/admin/request-images'
+    | '/api/admin/send-email'
+    | '/api/admin/upload'
+    | '/api/admin/walkthroughs'
+    | '/api/auth/google'
+    | '/api/auth/google/callback'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/account'
+    | '/admin'
     | '/contact'
+    | '/dashboard'
+    | '/faq'
+    | '/forgot-password'
+    | '/how-it-works'
+    | '/install'
+    | '/login'
     | '/pricing'
+    | '/privacy'
+    | '/register'
+    | '/reset-password'
+    | '/terms'
+    | '/upload-images'
+    | '/api/account'
+    | '/api/dashboard'
+    | '/api/email-preview'
+    | '/api/forgot-password'
+    | '/api/image-requests'
+    | '/api/login'
+    | '/api/logout'
+    | '/api/order-decision'
+    | '/api/order-place'
+    | '/api/register'
+    | '/api/reset-password'
+    | '/api/upload-images'
+    | '/api/webhook'
     | '/checkout/$slug'
     | '/checkout/cancelled'
     | '/checkout/success'
@@ -157,13 +546,46 @@ export interface FileRouteTypes {
     | '/services/$slug'
     | '/portfolio/'
     | '/services/'
+    | '/api/admin/orders'
+    | '/api/admin/request-images'
+    | '/api/admin/send-email'
+    | '/api/admin/upload'
+    | '/api/admin/walkthroughs'
+    | '/api/auth/google'
+    | '/api/auth/google/callback'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AccountRoute: typeof AccountRoute
+  AdminRoute: typeof AdminRoute
   ContactRoute: typeof ContactRoute
+  DashboardRoute: typeof DashboardRoute
+  FaqRoute: typeof FaqRoute
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
+  HowItWorksRoute: typeof HowItWorksRoute
+  InstallRoute: typeof InstallRoute
+  LoginRoute: typeof LoginRoute
   PricingRoute: typeof PricingRoute
+  PrivacyRoute: typeof PrivacyRoute
+  RegisterRoute: typeof RegisterRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
+  TermsRoute: typeof TermsRoute
+  UploadImagesRoute: typeof UploadImagesRoute
+  ApiAccountRoute: typeof ApiAccountRoute
+  ApiDashboardRoute: typeof ApiDashboardRoute
+  ApiEmailPreviewRoute: typeof ApiEmailPreviewRoute
+  ApiForgotPasswordRoute: typeof ApiForgotPasswordRoute
+  ApiImageRequestsRoute: typeof ApiImageRequestsRoute
+  ApiLoginRoute: typeof ApiLoginRoute
+  ApiLogoutRoute: typeof ApiLogoutRoute
+  ApiOrderDecisionRoute: typeof ApiOrderDecisionRoute
+  ApiOrderPlaceRoute: typeof ApiOrderPlaceRoute
+  ApiRegisterRoute: typeof ApiRegisterRoute
+  ApiResetPasswordRoute: typeof ApiResetPasswordRoute
+  ApiUploadImagesRoute: typeof ApiUploadImagesRoute
+  ApiWebhookRoute: typeof ApiWebhookRoute
   CheckoutSlugRoute: typeof CheckoutSlugRoute
   CheckoutCancelledRoute: typeof CheckoutCancelledRoute
   CheckoutSuccessRoute: typeof CheckoutSuccessRoute
@@ -171,6 +593,12 @@ export interface RootRouteChildren {
   ServicesSlugRoute: typeof ServicesSlugRoute
   PortfolioIndexRoute: typeof PortfolioIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
+  ApiAdminOrdersRoute: typeof ApiAdminOrdersRoute
+  ApiAdminRequestImagesRoute: typeof ApiAdminRequestImagesRoute
+  ApiAdminSendEmailRoute: typeof ApiAdminSendEmailRoute
+  ApiAdminUploadRoute: typeof ApiAdminUploadRoute
+  ApiAdminWalkthroughsRoute: typeof ApiAdminWalkthroughsRoute
+  ApiAuthGoogleRoute: typeof ApiAuthGoogleRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -189,6 +617,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/account': {
+      id: '/account'
+      path: '/account'
+      fullPath: '/account'
+      preLoaderRoute: typeof AccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -196,11 +638,179 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/install': {
+      id: '/install'
+      path: '/install'
+      fullPath: '/install'
+      preLoaderRoute: typeof InstallRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pricing': {
       id: '/pricing'
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/upload-images': {
+      id: '/upload-images'
+      path: '/upload-images'
+      fullPath: '/upload-images'
+      preLoaderRoute: typeof UploadImagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/account': {
+      id: '/api/account'
+      path: '/api/account'
+      fullPath: '/api/account'
+      preLoaderRoute: typeof ApiAccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/dashboard': {
+      id: '/api/dashboard'
+      path: '/api/dashboard'
+      fullPath: '/api/dashboard'
+      preLoaderRoute: typeof ApiDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/email-preview': {
+      id: '/api/email-preview'
+      path: '/api/email-preview'
+      fullPath: '/api/email-preview'
+      preLoaderRoute: typeof ApiEmailPreviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/forgot-password': {
+      id: '/api/forgot-password'
+      path: '/api/forgot-password'
+      fullPath: '/api/forgot-password'
+      preLoaderRoute: typeof ApiForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/image-requests': {
+      id: '/api/image-requests'
+      path: '/api/image-requests'
+      fullPath: '/api/image-requests'
+      preLoaderRoute: typeof ApiImageRequestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/login': {
+      id: '/api/login'
+      path: '/api/login'
+      fullPath: '/api/login'
+      preLoaderRoute: typeof ApiLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/logout': {
+      id: '/api/logout'
+      path: '/api/logout'
+      fullPath: '/api/logout'
+      preLoaderRoute: typeof ApiLogoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/order-decision': {
+      id: '/api/order-decision'
+      path: '/api/order-decision'
+      fullPath: '/api/order-decision'
+      preLoaderRoute: typeof ApiOrderDecisionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/order-place': {
+      id: '/api/order-place'
+      path: '/api/order-place'
+      fullPath: '/api/order-place'
+      preLoaderRoute: typeof ApiOrderPlaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/register': {
+      id: '/api/register'
+      path: '/api/register'
+      fullPath: '/api/register'
+      preLoaderRoute: typeof ApiRegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/reset-password': {
+      id: '/api/reset-password'
+      path: '/api/reset-password'
+      fullPath: '/api/reset-password'
+      preLoaderRoute: typeof ApiResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/upload-images': {
+      id: '/api/upload-images'
+      path: '/api/upload-images'
+      fullPath: '/api/upload-images'
+      preLoaderRoute: typeof ApiUploadImagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/webhook': {
+      id: '/api/webhook'
+      path: '/api/webhook'
+      fullPath: '/api/webhook'
+      preLoaderRoute: typeof ApiWebhookRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/checkout/$slug': {
@@ -252,14 +862,101 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/admin/orders': {
+      id: '/api/admin/orders'
+      path: '/api/admin/orders'
+      fullPath: '/api/admin/orders'
+      preLoaderRoute: typeof ApiAdminOrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/request-images': {
+      id: '/api/admin/request-images'
+      path: '/api/admin/request-images'
+      fullPath: '/api/admin/request-images'
+      preLoaderRoute: typeof ApiAdminRequestImagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/send-email': {
+      id: '/api/admin/send-email'
+      path: '/api/admin/send-email'
+      fullPath: '/api/admin/send-email'
+      preLoaderRoute: typeof ApiAdminSendEmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/upload': {
+      id: '/api/admin/upload'
+      path: '/api/admin/upload'
+      fullPath: '/api/admin/upload'
+      preLoaderRoute: typeof ApiAdminUploadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/walkthroughs': {
+      id: '/api/admin/walkthroughs'
+      path: '/api/admin/walkthroughs'
+      fullPath: '/api/admin/walkthroughs'
+      preLoaderRoute: typeof ApiAdminWalkthroughsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/google': {
+      id: '/api/auth/google'
+      path: '/api/auth/google'
+      fullPath: '/api/auth/google'
+      preLoaderRoute: typeof ApiAuthGoogleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/google/callback': {
+      id: '/api/auth/google/callback'
+      path: '/callback'
+      fullPath: '/api/auth/google/callback'
+      preLoaderRoute: typeof ApiAuthGoogleCallbackRouteImport
+      parentRoute: typeof ApiAuthGoogleRoute
+    }
   }
 }
+
+interface ApiAuthGoogleRouteChildren {
+  ApiAuthGoogleCallbackRoute: typeof ApiAuthGoogleCallbackRoute
+}
+
+const ApiAuthGoogleRouteChildren: ApiAuthGoogleRouteChildren = {
+  ApiAuthGoogleCallbackRoute: ApiAuthGoogleCallbackRoute,
+}
+
+const ApiAuthGoogleRouteWithChildren = ApiAuthGoogleRoute._addFileChildren(
+  ApiAuthGoogleRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AccountRoute: AccountRoute,
+  AdminRoute: AdminRoute,
   ContactRoute: ContactRoute,
+  DashboardRoute: DashboardRoute,
+  FaqRoute: FaqRoute,
+  ForgotPasswordRoute: ForgotPasswordRoute,
+  HowItWorksRoute: HowItWorksRoute,
+  InstallRoute: InstallRoute,
+  LoginRoute: LoginRoute,
   PricingRoute: PricingRoute,
+  PrivacyRoute: PrivacyRoute,
+  RegisterRoute: RegisterRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
+  TermsRoute: TermsRoute,
+  UploadImagesRoute: UploadImagesRoute,
+  ApiAccountRoute: ApiAccountRoute,
+  ApiDashboardRoute: ApiDashboardRoute,
+  ApiEmailPreviewRoute: ApiEmailPreviewRoute,
+  ApiForgotPasswordRoute: ApiForgotPasswordRoute,
+  ApiImageRequestsRoute: ApiImageRequestsRoute,
+  ApiLoginRoute: ApiLoginRoute,
+  ApiLogoutRoute: ApiLogoutRoute,
+  ApiOrderDecisionRoute: ApiOrderDecisionRoute,
+  ApiOrderPlaceRoute: ApiOrderPlaceRoute,
+  ApiRegisterRoute: ApiRegisterRoute,
+  ApiResetPasswordRoute: ApiResetPasswordRoute,
+  ApiUploadImagesRoute: ApiUploadImagesRoute,
+  ApiWebhookRoute: ApiWebhookRoute,
   CheckoutSlugRoute: CheckoutSlugRoute,
   CheckoutCancelledRoute: CheckoutCancelledRoute,
   CheckoutSuccessRoute: CheckoutSuccessRoute,
@@ -267,6 +964,12 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesSlugRoute: ServicesSlugRoute,
   PortfolioIndexRoute: PortfolioIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
+  ApiAdminOrdersRoute: ApiAdminOrdersRoute,
+  ApiAdminRequestImagesRoute: ApiAdminRequestImagesRoute,
+  ApiAdminSendEmailRoute: ApiAdminSendEmailRoute,
+  ApiAdminUploadRoute: ApiAdminUploadRoute,
+  ApiAdminWalkthroughsRoute: ApiAdminWalkthroughsRoute,
+  ApiAuthGoogleRoute: ApiAuthGoogleRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

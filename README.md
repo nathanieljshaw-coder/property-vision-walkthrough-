@@ -36,7 +36,7 @@ Perfect For
 
 This service is designed for Airbnb hosts, holiday-let owners, villas, apartments, cottages, chalets, property managers and short-term rental businesses looking for a more engaging way to present their properties.
 
-Starting From £199
+Starting From £100
 
 Give potential guests a better way to experience your property.
 
@@ -90,7 +90,7 @@ Whether you operate a small boutique hotel, a countryside B&B, a luxury resort o
 
 Larger hotels can have multiple room categories, facilities and locations connected together to create one complete digital journey.
 
-Starting From £599
+Starting From £250
 
 Give potential guests a reason to explore your hotel before they book.
 
@@ -146,7 +146,7 @@ For larger clubs and resorts, we can combine multiple experiences into one compl
 
 Visitors could move from the course to the clubhouse, explore the restaurant, view accommodation and discover additional facilities from a single website.
 
-Starting From £799
+Starting From £500
 
 Give golfers a reason to explore your course before they arrive.
 

@@ -6,13 +6,13 @@ import { portfolioProjects, type PortfolioProject } from "@/content/portfolio";
 export const Route = createFileRoute("/portfolio/")({
   head: () => ({
     meta: [
-      { title: "Portfolio | LUMEN Digital Experiences" },
+      { title: "Demo | LUMEN Digital Experiences" },
       {
         name: "description",
         content:
           "Selected websites and cinematic walkthroughs created for villas, hotels, golf resorts, restaurants and property businesses.",
       },
-      { property: "og:title", content: "Portfolio | LUMEN Digital Experiences" },
+      { property: "og:title", content: "Demo | LUMEN Digital Experiences" },
       {
         property: "og:description",
         content: "Selected projects across hospitality, property and golf.",
@@ -117,6 +117,9 @@ function PortfolioPage() {
         <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
           A selection of AI video walkthroughs, websites and cinematic experiences created for
           hospitality, property and golf businesses.
+        </p>
+        <p className="mt-3 max-w-2xl text-sm text-muted-foreground/70 italic">
+          For copyright reasons, these places are fake and do not exist in real life.
         </p>
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

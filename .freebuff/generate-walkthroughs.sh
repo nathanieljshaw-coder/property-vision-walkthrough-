@@ -1,11 +1,14 @@
 #!/bin/bash
-# Regenerates the 30-second portfolio walkthrough videos at TRUE 8K (3840×2160)
-# using AI-upscaled source photos (Real-ESRGAN x4). Camera style: COMPLETELY
-# STILL — every shot is a locked-off static view. The tour moves between spaces
-# through crossfades. 8 shots × 4.1s with 0.4s crossfades = exactly 30.0s.
+# Regenerates the 30-second portfolio walkthrough videos at 4K (3840×2160)
+# using AI-upscaled source photos (Real-ESRGAN x4, .freebuff/upscaled-8k).
+# Structure: ONE drone reveal at the start (14.8s — camera starts tight on
+# the property and pulls back to the full wide shot with a gentle orbit
+# rotation), then each part of the property shown ONCE as a gentle slow
+# push-in (2 × 8.0s, zoom 1.0x → 1.18x) so the drone feel carries through.
+# 3 shots with 0.4s crossfades = exactly 30.0s.
 #
-# Uses crop+scale instead of zoompan for much faster encoding on static content.
-# Source images are 3840×2160 from .freebuff/upscaled-8k/.
+# Sources are the true 8K (7680×4320) upscales; zoom shots pre-scale to
+# 5760×3240 (1.5x of output) so even the tightest crop samples ≥3840px wide.
 #
 # Usage: ./.freebuff/generate-walkthroughs.sh [slug]   (optional: one place only)
 # Output: public/walkthroughs/<slug>.mp4
@@ -21,21 +24,17 @@ if [ -z "$FFMPEG" ]; then
   exit 1
 fi
 
-SRC="$ROOT/.freebuff/upscaled-4k"
+SRC="$ROOT/.freebuff/upscaled-8k"
 OUT="$ROOT/public/walkthroughs"
 mkdir -p "$OUT"
 
 FPS=30
-FRAMES=123        # 4.1s per shot at 30fps
-XFADE=0.4         # crossfade duration (s)
-# xfade offsets: n * (shot length - fade) = n * 3.7  (8 shots -> exactly 30.0s)
-O1=3.7
-O2=7.4
-O3=11.1
-O4=14.8
-O5=18.5
-O6=22.2
-O7=25.9
+XFADE=0.4
+FRAMES1=444        # 14.8s drone reveal
+FRAMES2=240        # 8.0s push-in views
+# xfade offsets: 14.8-0.4=14.4, then (14.8+8.0)-0.8=22.0  (3 shots -> 30.0s)
+O1=14.4
+O2=22.0
 
 # slug:hero:angle1:angle2  (image basenames, without extension)
 PROJECTS=(
@@ -49,23 +48,25 @@ PROJECTS=(
 
 ONLY="${1:-}"
 
-# build_shot <image> <view> <out.mp4> — one LOCKED-OFF static view, 3840x2160@30fps.
-# Uses crop+scale (much faster than zoompan for static content) on the 8K
-# AI-upscaled source image. Framing matches the original zoompan parameters:
-#   centre → crop 87% of frame (zoom 1.15), centred
-#   left   → crop 74% from left edge (zoom 1.35)
-#   right  → crop 74% from right edge (zoom 1.35)
-build_shot() {
-  local img="$1" view="$2" out="$3" crop
-  case "$view" in
-    centre)  crop="crop=iw/1.15:ih/1.15:(iw-iw/1.15)/2:(ih-ih/1.15)/2" ;;
-    left)    crop="crop=iw/1.35:ih/1.35:0:(ih-ih/1.35)/2" ;;
-    right)   crop="crop=iw/1.35:ih/1.35:(iw-iw/1.35):(ih-ih/1.35)/2" ;;
-    *) echo "unknown view: $view" >&2; exit 1 ;;
-  esac
-  "$FFMPEG" -y -loop 1 -i "$img" \
-    -vf "$crop,scale=3840:2160:flags=lanczos,unsharp=5:5:0.5:5:5:0.0" \
-    -frames:v "$FRAMES" -c:v libx264 -preset faster -crf 18 -pix_fmt yuv420p -an \
+# build_reveal <image> <out.mp4> — the opening DRONE REVEAL, 3840x2160@30fps.
+# Starts zoomed in (1.45x) on the property and pulls back to the full frame
+# while rotating slightly (a drone backing away and circling). Centred.
+build_reveal() {
+  local img="$1" out="$2" last=$((FRAMES1 - 1))
+  "$FFMPEG" -y -i "$img" \
+    -vf "scale=5760:3240:flags=lanczos,zoompan=z='1.45-0.45*on/$last':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=$FRAMES1:s=3840x2160:fps=30,rotate=angle='(PI/180)*(-1.2+2.0*n/$last)':ow=iw:oh=ih:c=black,scale=4032:2268:flags=lanczos,crop=3840:2160,unsharp=5:5:0.5:5:5:0.0" \
+    -frames:v "$FRAMES1" -c:v libx264 -preset faster -crf 18 -pix_fmt yuv420p -an \
+    "$out" -loglevel error
+}
+
+# build_push <image> <out.mp4> — one GENTLE SLOW PUSH-IN, 3840x2160@30fps.
+# Slow zoom 1.0x → 1.18x over the shot (a drone gliding into the space),
+# centred. Same zoompan headroom pre-scale as the reveal.
+build_push() {
+  local img="$1" out="$2" last=$((FRAMES2 - 1))
+  "$FFMPEG" -y -i "$img" \
+    -vf "scale=5760:3240:flags=lanczos,zoompan=z='1.0+0.18*on/$last':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=$FRAMES2:s=3840x2160:fps=30,unsharp=5:5:0.5:5:5:0.0" \
+    -frames:v "$FRAMES2" -c:v libx264 -preset faster -crf 18 -pix_fmt yuv420p -an \
     "$out" -loglevel error
 }
 
@@ -76,27 +77,16 @@ for spec in "${PROJECTS[@]}"; do
   mkdir -p "$tmp"
   echo "== $slug =="
 
-  build_shot "$SRC/$hero.jpg" centre "$tmp/0.mp4"
-  build_shot "$SRC/$hero.jpg" right  "$tmp/1.mp4"
-  build_shot "$SRC/$a1.jpg"   centre "$tmp/2.mp4"
-  build_shot "$SRC/$a1.jpg"   left   "$tmp/3.mp4"
-  build_shot "$SRC/$a1.jpg"   right  "$tmp/4.mp4"
-  build_shot "$SRC/$a2.jpg"   centre "$tmp/5.mp4"
-  build_shot "$SRC/$a2.jpg"   left   "$tmp/6.mp4"
-  build_shot "$SRC/$a2.jpg"   right  "$tmp/7.mp4"
+  build_reveal  "$SRC/$hero.jpg" "$tmp/0.mp4"
+  build_push    "$SRC/$a1.jpg"   "$tmp/1.mp4"
+  build_push    "$SRC/$a2.jpg"   "$tmp/2.mp4"
 
-  "$FFMPEG" -y -i "$tmp/0.mp4" -i "$tmp/1.mp4" -i "$tmp/2.mp4" -i "$tmp/3.mp4" \
-    -i "$tmp/4.mp4" -i "$tmp/5.mp4" -i "$tmp/6.mp4" -i "$tmp/7.mp4" \
+  "$FFMPEG" -y -i "$tmp/0.mp4" -i "$tmp/1.mp4" -i "$tmp/2.mp4" \
     -filter_complex "
       [0:v][1:v]xfade=transition=fade:duration=$XFADE:offset=$O1[v01];
-      [v01][2:v]xfade=transition=fade:duration=$XFADE:offset=$O2[v02];
-      [v02][3:v]xfade=transition=fade:duration=$XFADE:offset=$O3[v03];
-      [v03][4:v]xfade=transition=fade:duration=$XFADE:offset=$O4[v04];
-      [v04][5:v]xfade=transition=fade:duration=$XFADE:offset=$O5[v05];
-      [v05][6:v]xfade=transition=fade:duration=$XFADE:offset=$O6[v06];
-      [v06][7:v]xfade=transition=fade:duration=$XFADE:offset=$O7[vout]
+      [v01][2:v]xfade=transition=fade:duration=$XFADE:offset=$O2[vout]
     " \
-    -map "[vout]" -c:v libx264 -preset faster -crf 18 -pix_fmt yuv420p \
+    -map "[vout]" -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p \
     -movflags +faststart -an "$OUT/$slug.mp4" -loglevel error
 
   rm -rf "$tmp"
