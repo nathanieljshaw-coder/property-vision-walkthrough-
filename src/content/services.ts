@@ -24,6 +24,60 @@ export type ServicePage = {
 
 export const servicePages: ServicePage[] = [
   {
+    slug: "ski-biking-resorts",
+    nav: "Ski & Biking Resorts",
+    eyebrow: "Ski & Biking Resorts",
+    title: "Let Visitors Experience The Resort Before They Arrive",
+    lead: "Show guests the complete mountain experience before they book — from accommodation and arrival to trails, lifts, après-ski and everything in between.",
+    sections: [
+      {
+        body: [
+          "A resort is more than a room and a few landscape photographs. Give visitors a cinematic way to understand the atmosphere, layout and experiences waiting for them.",
+        ],
+      },
+      {
+        heading: "Showcase The Complete Resort",
+        body: [
+          "Create individual experiences for lodges, chalets, apartments, hotels, restaurants, spas, lifts, trails, bike parks and other facilities.",
+          "Visitors can move through the places that matter most before choosing where to stay, ride, ski or spend their time.",
+        ],
+      },
+      {
+        heading: "Built For Skiing & Biking",
+        body: [
+          "Highlight the character of your terrain, routes, views and facilities with a smooth digital journey designed around the way guests use your resort.",
+          "Use separate experiences for winter and summer seasons, or bring both together in one destination platform.",
+        ],
+      },
+      {
+        heading: "Designed Around Your Brand",
+        body: [
+          "We use your existing photographs, videos, logo, colours and visual identity to create an experience that feels like a natural extension of your resort.",
+        ],
+      },
+      {
+        heading: "Perfect For",
+        body: [
+          "Ski resorts, bike parks, mountain lodges, alpine hotels, chalet operators, destination resorts and tourism businesses looking to attract visitors before they arrive.",
+        ],
+      },
+    ],
+    priceLabel: "£1,000",
+    priceNote: "A complete individual digital experience for your ski or biking resort.",
+    ctaLabel: "Create Your Resort Experience",
+    amount: 100000,
+    features: [
+      "Resort experience built from your existing photos & videos",
+      "Accommodation, trails, lifts and facility walkthroughs",
+      "Seasonal skiing and biking experiences",
+      "Shareable link and website integration",
+      "Designed around your resort's branding",
+    ],
+    productName: "Ski & Biking Resort Experience",
+    metaTitle: "Ski & Biking Resort Digital Experiences | LUMEN",
+    metaDescription: "Cinematic digital experiences for ski resorts, bike parks, mountain lodges and alpine destinations. £1,000.",
+  },
+  {
     slug: "airbnb",
     nav: "Airbnb & Holiday Rentals",
     eyebrow: "Airbnb & Holiday Rentals",
@@ -233,10 +287,13 @@ export const servicePages: ServicePage[] = [
     metaDescription:
       "Hole-by-hole walkthroughs, clubhouse tours and complete digital platforms for golf courses and resorts. From £500.",
   },
+];
+
+export const packagePages: ServicePage[] = [
   {
     slug: "websites",
-    nav: "Websites",
-    eyebrow: "Websites",
+    nav: "Basic Website",
+    eyebrow: "Basic Website",
     title: "A Website Built Around Your Business",
     lead: "Your website is often the first interaction a potential customer has with your business.",
     sections: [
@@ -296,67 +353,10 @@ export const servicePages: ServicePage[] = [
       "Contact forms, location and social links",
       "Easy to update as your business grows",
     ],
-    productName: "Business Website",
-    metaTitle: "Professional Business Website Design | LUMEN",
+    productName: "Basic Website",
+    metaTitle: "Basic Website Design | LUMEN",
     metaDescription:
       "Bespoke business websites with galleries, walkthrough integration, SEO foundations and mobile-first design. From £199.",
-  },
-];
-
-export const packagePages: ServicePage[] = [
-  {
-    slug: "ski-biking-resorts",
-    nav: "Ski & Biking Resorts",
-    eyebrow: "Ski & Biking Resorts",
-    title: "Let Visitors Experience The Resort Before They Arrive",
-    lead: "Show guests the complete mountain experience before they book — from accommodation and arrival to trails, lifts, après-ski and everything in between.",
-    sections: [
-      {
-        body: [
-          "A resort is more than a room and a few landscape photographs. Give visitors a cinematic way to understand the atmosphere, layout and experiences waiting for them.",
-        ],
-      },
-      {
-        heading: "Showcase The Complete Resort",
-        body: [
-          "Create individual experiences for lodges, chalets, apartments, hotels, restaurants, spas, lifts, trails, bike parks and other facilities.",
-          "Visitors can move through the places that matter most before choosing where to stay, ride, ski or spend their time.",
-        ],
-      },
-      {
-        heading: "Built For Skiing & Biking",
-        body: [
-          "Highlight the character of your terrain, routes, views and facilities with a smooth digital journey designed around the way guests use your resort.",
-          "Use separate experiences for winter and summer seasons, or bring both together in one destination platform.",
-        ],
-      },
-      {
-        heading: "Designed Around Your Brand",
-        body: [
-          "We use your existing photographs, videos, logo, colours and visual identity to create an experience that feels like a natural extension of your resort.",
-        ],
-      },
-      {
-        heading: "Perfect For",
-        body: [
-          "Ski resorts, bike parks, mountain lodges, alpine hotels, chalet operators, destination resorts and tourism businesses looking to attract visitors before they arrive.",
-        ],
-      },
-    ],
-    priceLabel: "£1,000",
-    priceNote: "A complete individual digital experience for your ski or biking resort.",
-    ctaLabel: "Create Your Resort Experience",
-    amount: 100000,
-    features: [
-      "Resort experience built from your existing photos & videos",
-      "Accommodation, trails, lifts and facility walkthroughs",
-      "Seasonal skiing and biking experiences",
-      "Shareable link and website integration",
-      "Designed around your resort's branding",
-    ],
-    productName: "Ski & Biking Resort Experience",
-    metaTitle: "Ski & Biking Resort Digital Experiences | LUMEN",
-    metaDescription: "Cinematic digital experiences for ski resorts, bike parks, mountain lodges and alpine destinations. £1,000.",
   },
   {
     slug: "professional",

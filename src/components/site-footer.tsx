@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { servicePages, packagePages } from "@/content/services";
+import { advertPages } from "@/content/adverts";
 
 export function SiteFooter() {
   return (
@@ -33,7 +34,24 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <h2 className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Websites & More</h2>
+          <h2 className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Adverts</h2>
+          <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+            {advertPages.map((advert) => (
+              <li key={advert.slug}>
+                <Link
+                  to="/adverts/$slug"
+                  params={{ slug: advert.slug }}
+                  className="transition-colors hover:text-gold"
+                >
+                  {advert.nav}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Website Packages</h2>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
             {packagePages.map((s) => (
               <li key={s.slug}>

@@ -2,6 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { createStripeCheckoutSession } from "./checkout.server";
 import { findOffering } from "@/content/services";
+import { advertPages } from "@/content/adverts";
 import { addonAmount, addonsForSlug } from "./addons";
 
 const schema = z.object({
@@ -17,7 +18,7 @@ const schema = z.object({
 export const startCheckout = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => schema.parse(data))
   .handler(async ({ data }) => {
-    const offering = findOffering(data.slug);
+    const offering = findOffering(data.slug) ?? advertPages.find((advert) => advert.slug === data.slug);
     if (!offering) throw new Error("Unknown package.");
     const allowed = addonsForSlug(offering.slug);
     const addons = (data.addonIds ?? []).filter((id) => allowed.includes(id));

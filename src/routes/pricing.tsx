@@ -24,6 +24,13 @@ export const Route = createFileRoute("/pricing")({
 });
 
 const features: Record<string, string[]> = {
+  websites: [
+    "Bespoke design around your existing brand",
+    "Galleries and cinematic walkthrough integration",
+    "Mobile-first and search-engine ready",
+    "Contact forms, location and social links",
+    "Easy to update as your business grows",
+  ],
   professional: [
     "Up to eight designed pages",
     "Custom branding & animations",

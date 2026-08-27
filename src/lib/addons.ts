@@ -63,14 +63,20 @@ export const WALKTHROUGH_ADDONS = ["extra-room", "drone", "rush", "unlimited-rev
 /** Add-on ids that apply to website packages. */
 export const WEBSITE_ADDONS = ["extra-page", "add-walkthrough", "rush", "unlimited-revisions"];
 
+/** Add-on ids that apply to advert packages. */
+export const ADVERT_ADDONS = ["drone", "rush", "unlimited-revisions", "music"];
+
 /** Complete Digital Experience combines a website with walkthroughs — all add-ons apply. */
 export const COMPLETE_ADDONS = Array.from(new Set([...WALKTHROUGH_ADDONS, ...WEBSITE_ADDONS]));
+
+const ADVERT_SLUGS = ["social-media-advert", "cinematic-advert", "advert-campaign"];
 
 export function isWalkthroughPackage(slug: string): boolean {
   return ["airbnb", "hotels", "golf", "ski-biking-resorts"].includes(slug);
 }
 
 export function addonsForSlug(slug: string): string[] {
+  if (ADVERT_SLUGS.includes(slug)) return ADVERT_ADDONS;
   if (slug === "complete") return COMPLETE_ADDONS;
   return isWalkthroughPackage(slug) ? WALKTHROUGH_ADDONS : WEBSITE_ADDONS;
 }

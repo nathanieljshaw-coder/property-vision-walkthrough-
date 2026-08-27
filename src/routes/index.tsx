@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
-import { ArrowRight, Building2, Film, Home, Landmark } from "lucide-react";
+import { ArrowRight, Building2, Home, Landmark, Mountain } from "lucide-react";
 import { servicePages } from "@/content/services";
 
 function InstallButton() {
@@ -87,7 +87,6 @@ function InstallButton() {
 import villaHero from "@/assets/portfolio/villa-sereno-hero.jpg";
 import alpineHero from "@/assets/portfolio/grand-alpine-hero.jpg";
 import golfHero from "@/assets/portfolio/pine-valley-hero.jpg";
-import websiteHero from "@/assets/portfolio/apex-estate-hero.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -109,13 +108,18 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const icons = { airbnb: Home, hotels: Building2, golf: Landmark, websites: Film } as const;
+const icons = {
+  "ski-biking-resorts": Mountain,
+  airbnb: Home,
+  hotels: Building2,
+  golf: Landmark,
+} as const;
 
 const cardImages: Record<string, string> = {
+  "ski-biking-resorts": alpineHero,
   airbnb: villaHero,
   hotels: alpineHero,
   golf: golfHero,
-  websites: websiteHero,
 };
 
 function Index() {
@@ -149,7 +153,7 @@ function Index() {
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-gold/10 px-3 py-1">
               <span className="h-2 w-2 animate-pulse rounded-full bg-gold" />
               <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gold">
-                Professional Websites & Cinematic Walkthroughs
+                Professional Websites, Walkthroughs & Adverts
               </span>
             </div>
 
@@ -224,15 +228,7 @@ function Index() {
                   </div>
                 </>
               );
-              return s.slug === "websites" ? (
-                <Link
-                  key={s.slug}
-                  to="/pricing"
-                  className="card-lift group overflow-hidden rounded-2xl border border-border bg-surface"
-                >
-                  {card}
-                </Link>
-              ) : (
+              return (
                 <Link
                   key={s.slug}
                   to="/services/$slug"

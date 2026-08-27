@@ -1,12 +1,18 @@
 import { Link } from "@tanstack/react-router";
 import type { ServicePage } from "@/content/services";
 import { BuyButton } from "@/components/buy-button";
+import { Megaphone } from "lucide-react";
+
+const ADVERT_SLUGS = ["social-media-advert", "cinematic-advert", "advert-campaign"];
 
 export function OfferingPage({ offering }: { offering: ServicePage }) {
+  const isAdvert = ADVERT_SLUGS.includes(offering.slug);
+
   return (
     <div className="pt-32 pb-24">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">
+          {isAdvert && <Megaphone className="mr-2 inline h-3.5 w-3.5" />}
           {offering.eyebrow}
         </p>
         <h1 className="mt-5 font-display text-5xl leading-[1.05] text-foreground sm:text-6xl">

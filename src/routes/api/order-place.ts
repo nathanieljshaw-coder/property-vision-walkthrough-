@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import bcrypt from "bcryptjs";
 import { findUserByEmail, createUser, createSession, updateUserPhone, createOrder } from "@/lib/db.server";
 import { findOffering } from "@/content/services";
+import { advertPages } from "@/content/adverts";
 import { addonAmount, addonsForSlug } from "@/lib/addons";
 
 export const Route = createFileRoute("/api/order-place")({
@@ -22,7 +23,7 @@ export const Route = createFileRoute("/api/order-place")({
             );
           }
 
-          const offering = findOffering(slug);
+          const offering = findOffering(slug) ?? advertPages.find((a) => a.slug === slug);
           if (!offering) return Response.json({ error: "Unknown package." }, { status: 400 });
 
           const allowed = addonsForSlug(offering.slug);

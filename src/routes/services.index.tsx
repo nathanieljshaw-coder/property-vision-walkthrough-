@@ -52,7 +52,8 @@ function ServicesPage() {
             return s.slug === "websites" ? (
               <Link
                 key={s.slug}
-                to="/pricing"
+                to="/packages/$slug"
+                params={{ slug: "websites" }}
                 className="card-lift rounded-2xl border border-border bg-surface p-10"
               >
                 {card}

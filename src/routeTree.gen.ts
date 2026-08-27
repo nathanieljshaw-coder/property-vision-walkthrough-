@@ -26,6 +26,8 @@ import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as UploadImagesRouteImport } from './routes/upload-images'
+import { Route as AdvertsIndexRouteImport } from './routes/adverts.index'
+import { Route as AdvertsSlugRouteImport } from './routes/adverts.$slug'
 import { Route as ApiAccountRouteImport } from './routes/api/account'
 import { Route as ApiDashboardRouteImport } from './routes/api/dashboard'
 import { Route as ApiEmailPreviewRouteImport } from './routes/api/email-preview'
@@ -137,6 +139,16 @@ const TermsRoute = TermsRouteImport.update({
 const UploadImagesRoute = UploadImagesRouteImport.update({
   id: '/upload-images',
   path: '/upload-images',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdvertsIndexRoute = AdvertsIndexRouteImport.update({
+  id: '/adverts/',
+  path: '/adverts/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdvertsSlugRoute = AdvertsSlugRouteImport.update({
+  id: '/adverts/$slug',
+  path: '/adverts/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAccountRoute = ApiAccountRouteImport.update({
@@ -293,6 +305,7 @@ export interface FileRoutesByFullPath {
   '/reset-password': typeof ResetPasswordRoute
   '/terms': typeof TermsRoute
   '/upload-images': typeof UploadImagesRoute
+  '/adverts/$slug': typeof AdvertsSlugRoute
   '/api/account': typeof ApiAccountRoute
   '/api/dashboard': typeof ApiDashboardRoute
   '/api/email-preview': typeof ApiEmailPreviewRoute
@@ -311,6 +324,7 @@ export interface FileRoutesByFullPath {
   '/checkout/success': typeof CheckoutSuccessRoute
   '/packages/$slug': typeof PackagesSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/adverts/': typeof AdvertsIndexRoute
   '/portfolio/': typeof PortfolioIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/api/admin/orders': typeof ApiAdminOrdersRoute
@@ -339,6 +353,7 @@ export interface FileRoutesByTo {
   '/reset-password': typeof ResetPasswordRoute
   '/terms': typeof TermsRoute
   '/upload-images': typeof UploadImagesRoute
+  '/adverts/$slug': typeof AdvertsSlugRoute
   '/api/account': typeof ApiAccountRoute
   '/api/dashboard': typeof ApiDashboardRoute
   '/api/email-preview': typeof ApiEmailPreviewRoute
@@ -357,6 +372,7 @@ export interface FileRoutesByTo {
   '/checkout/success': typeof CheckoutSuccessRoute
   '/packages/$slug': typeof PackagesSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/adverts': typeof AdvertsIndexRoute
   '/portfolio': typeof PortfolioIndexRoute
   '/services': typeof ServicesIndexRoute
   '/api/admin/orders': typeof ApiAdminOrdersRoute
@@ -386,6 +402,7 @@ export interface FileRoutesById {
   '/reset-password': typeof ResetPasswordRoute
   '/terms': typeof TermsRoute
   '/upload-images': typeof UploadImagesRoute
+  '/adverts/$slug': typeof AdvertsSlugRoute
   '/api/account': typeof ApiAccountRoute
   '/api/dashboard': typeof ApiDashboardRoute
   '/api/email-preview': typeof ApiEmailPreviewRoute
@@ -404,6 +421,7 @@ export interface FileRoutesById {
   '/checkout/success': typeof CheckoutSuccessRoute
   '/packages/$slug': typeof PackagesSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/adverts/': typeof AdvertsIndexRoute
   '/portfolio/': typeof PortfolioIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/api/admin/orders': typeof ApiAdminOrdersRoute
@@ -434,6 +452,7 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/terms'
     | '/upload-images'
+    | '/adverts/$slug'
     | '/api/account'
     | '/api/dashboard'
     | '/api/email-preview'
@@ -452,6 +471,7 @@ export interface FileRouteTypes {
     | '/checkout/success'
     | '/packages/$slug'
     | '/services/$slug'
+    | '/adverts/'
     | '/portfolio/'
     | '/services/'
     | '/api/admin/orders'
@@ -480,6 +500,7 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/terms'
     | '/upload-images'
+    | '/adverts/$slug'
     | '/api/account'
     | '/api/dashboard'
     | '/api/email-preview'
@@ -498,6 +519,7 @@ export interface FileRouteTypes {
     | '/checkout/success'
     | '/packages/$slug'
     | '/services/$slug'
+    | '/adverts'
     | '/portfolio'
     | '/services'
     | '/api/admin/orders'
@@ -526,6 +548,7 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/terms'
     | '/upload-images'
+    | '/adverts/$slug'
     | '/api/account'
     | '/api/dashboard'
     | '/api/email-preview'
@@ -544,6 +567,7 @@ export interface FileRouteTypes {
     | '/checkout/success'
     | '/packages/$slug'
     | '/services/$slug'
+    | '/adverts/'
     | '/portfolio/'
     | '/services/'
     | '/api/admin/orders'
@@ -573,6 +597,7 @@ export interface RootRouteChildren {
   ResetPasswordRoute: typeof ResetPasswordRoute
   TermsRoute: typeof TermsRoute
   UploadImagesRoute: typeof UploadImagesRoute
+  AdvertsSlugRoute: typeof AdvertsSlugRoute
   ApiAccountRoute: typeof ApiAccountRoute
   ApiDashboardRoute: typeof ApiDashboardRoute
   ApiEmailPreviewRoute: typeof ApiEmailPreviewRoute
@@ -591,6 +616,7 @@ export interface RootRouteChildren {
   CheckoutSuccessRoute: typeof CheckoutSuccessRoute
   PackagesSlugRoute: typeof PackagesSlugRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
+  AdvertsIndexRoute: typeof AdvertsIndexRoute
   PortfolioIndexRoute: typeof PortfolioIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
   ApiAdminOrdersRoute: typeof ApiAdminOrdersRoute
@@ -720,6 +746,20 @@ declare module '@tanstack/react-router' {
       path: '/upload-images'
       fullPath: '/upload-images'
       preLoaderRoute: typeof UploadImagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/adverts/': {
+      id: '/adverts/'
+      path: '/adverts'
+      fullPath: '/adverts/'
+      preLoaderRoute: typeof AdvertsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/adverts/$slug': {
+      id: '/adverts/$slug'
+      path: '/adverts/$slug'
+      fullPath: '/adverts/$slug'
+      preLoaderRoute: typeof AdvertsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/account': {
@@ -944,6 +984,7 @@ const rootRouteChildren: RootRouteChildren = {
   ResetPasswordRoute: ResetPasswordRoute,
   TermsRoute: TermsRoute,
   UploadImagesRoute: UploadImagesRoute,
+  AdvertsSlugRoute: AdvertsSlugRoute,
   ApiAccountRoute: ApiAccountRoute,
   ApiDashboardRoute: ApiDashboardRoute,
   ApiEmailPreviewRoute: ApiEmailPreviewRoute,
@@ -962,6 +1003,7 @@ const rootRouteChildren: RootRouteChildren = {
   CheckoutSuccessRoute: CheckoutSuccessRoute,
   PackagesSlugRoute: PackagesSlugRoute,
   ServicesSlugRoute: ServicesSlugRoute,
+  AdvertsIndexRoute: AdvertsIndexRoute,
   PortfolioIndexRoute: PortfolioIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
   ApiAdminOrdersRoute: ApiAdminOrdersRoute,

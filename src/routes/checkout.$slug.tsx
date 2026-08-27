@@ -3,12 +3,13 @@ import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-ro
 import { useServerFn } from "@tanstack/react-start";
 import { ArrowLeft, ImagePlus, Loader2, Lock, ShieldCheck, X } from "lucide-react";
 import { findOffering } from "@/content/services";
+import { advertPages } from "@/content/adverts";
 import { startCheckout } from "@/lib/checkout.functions";
 import { ADDONS, addonAmount, addonsForSlug, isWalkthroughPackage } from "@/lib/addons";
 
 export const Route = createFileRoute("/checkout/$slug")({
   loader: ({ params }) => {
-    const offering = findOffering(params.slug);
+    const offering = findOffering(params.slug) ?? advertPages.find((a) => a.slug === params.slug);
     if (!offering) throw notFound();
     return {
       slug: offering.slug,
