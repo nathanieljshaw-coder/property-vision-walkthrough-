@@ -128,9 +128,15 @@ function Index() {
           muted
           loop
           playsInline
-          src="/walkthroughs/hero-montage.mp4"
+          preload="auto"
+          poster={villaHero}
           className="absolute inset-0 h-full w-full object-cover"
-        />
+          onCanPlay={(event) => {
+            event.currentTarget.play().catch(() => undefined);
+          }}
+        >
+          <source src="/walkthroughs/hero-montage.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-noise" />
         <div className="absolute inset-0 bg-gradient-to-tr from-background/75 via-background/40 to-transparent" />
         <div
