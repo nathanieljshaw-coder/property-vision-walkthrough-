@@ -134,6 +134,9 @@ function CheckoutPage() {
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || "Could not place your order.");
+        if (data.token) {
+          document.cookie = `lumen_session=${data.token}; path=/; samesite=lax; max-age=${data.maxAge || 30 * 24 * 60 * 60}`;
+        }
         navigate({ to: "/dashboard" });
         return;
       }

@@ -69,7 +69,7 @@ function DashboardPage() {
 
   async function loadDashboard() {
     try {
-      const res = await fetch("/api/dashboard");
+      const res = await fetch("/api/dashboard", { credentials: "include" });
       if (res.status === 401) {
         navigate({ to: "/login" });
         return;

@@ -25,13 +25,7 @@ export const Route = createFileRoute("/api/register")({
           const maxAge = remember === false ? undefined : rememberDays * 24 * 60 * 60;
 
           return Response.json(
-            { ok: true, user: { name: user.name, email: user.email } },
-            {
-              status: 200,
-              headers: {
-                "Set-Cookie": `lumen_session=${token}; Path=/; HttpOnly; SameSite=Lax${maxAge ? `; Max-Age=${maxAge}` : ""}`,
-              },
-            }
+            { ok: true, user: { name: user.name, email: user.email }, token, maxAge: maxAge ?? null }
           );
         } catch (err: any) {
           return Response.json({ error: err.message || "Registration failed" }, { status: 500 });

@@ -43,13 +43,13 @@ export const Route = createFileRoute("/api/login")({
           const token = await createSession(user.id, rememberDays);
           const maxAge = remember === false ? undefined : rememberDays * 24 * 60 * 60;
 
+          // Return token in body so client can set cookie (TanStack Start strips Set-Cookie from server.handlers responses)
           return Response.json(
-            { ok: true, user: { name: user.name, email: user.email } },
             {
-              status: 200,
-              headers: {
-                "Set-Cookie": `lumen_session=${token}; Path=/; HttpOnly; SameSite=Lax${maxAge ? `; Max-Age=${maxAge}` : ""}`,
-              },
+              ok: true,
+              user: { name: user.name, email: user.email },
+              token,
+              maxAge: maxAge ?? null,
             }
           );
         } catch (err: any) {

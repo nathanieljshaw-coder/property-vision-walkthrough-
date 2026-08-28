@@ -32,6 +32,11 @@ function LoginPage() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Login failed");
+      // Set session cookie client-side (TanStack Start strips Set-Cookie from server handler responses)
+      if (data.token) {
+        const cookieMaxAge = data.maxAge ? `; max-age=${data.maxAge}` : "";
+        document.cookie = `lumen_session=${data.token}; path=/; samesite=lax${cookieMaxAge}`;
+      }
       navigate({ to: "/dashboard" });
     } catch (err: any) {
       setError(err.message || "Login failed. Please try again.");

@@ -60,11 +60,9 @@ export const Route = createFileRoute("/api/order-place")({
 
           // Auto-login so the customer can reach the dashboard immediately.
           const token = await createSession(user.id);
-          const cookie = `lumen_session=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${30 * 24 * 60 * 60}`;
 
           return Response.json(
-            { ok: true, orderId: order.id, user: { name: user.name, email: user.email } },
-            { status: 200, headers: { "Set-Cookie": cookie } }
+            { ok: true, orderId: order.id, user: { name: user.name, email: user.email }, token, maxAge: 30 * 24 * 60 * 60 }
           );
         } catch (err: any) {
           return Response.json({ error: err.message || "Could not place your order." }, { status: 500 });

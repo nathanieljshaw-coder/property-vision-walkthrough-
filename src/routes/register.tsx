@@ -30,6 +30,10 @@ function RegisterPage() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Registration failed");
+      if (data.token) {
+        const cookieMaxAge = data.maxAge ? `; max-age=${data.maxAge}` : "";
+        document.cookie = `lumen_session=${data.token}; path=/; samesite=lax${cookieMaxAge}`;
+      }
       navigate({ to: "/dashboard" });
     } catch (err: any) {
       setError(err.message || "Registration failed. Please try again.");
