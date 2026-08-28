@@ -9,9 +9,9 @@ const links = [
   { to: "/portfolio", label: "Demo" },
   { to: "/about", label: "About" },
   { to: "/how-it-works", label: "How It Works" },
-  { to: "/pricing", label: "Pricing" },
   { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
+  { to: "/dashboard", label: "Dashboard" },
 ] as const;
 
 export function SiteHeader() {
@@ -57,12 +57,6 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex items-center gap-5">
-            <Link
-              to="/login"
-              className="hidden text-xs font-medium uppercase tracking-wider text-muted-foreground transition-colors hover:text-gold xl:inline-flex"
-            >
-              Dashboard
-            </Link>
             {isAdmin && (
               <Link
                 to="/admin"
