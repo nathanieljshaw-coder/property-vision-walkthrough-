@@ -157,15 +157,15 @@ function Index() {
               </span>
             </div>
 
-            <h1 className="font-display text-5xl leading-[1.05] text-foreground [text-shadow:0_2px_18px_rgba(2,6,17,0.9),0_1px_3px_rgba(2,6,17,0.95)] sm:text-7xl lg:text-8xl">
+            <h1 className="font-display text-5xl leading-[1.05] text-foreground [text-shadow:0_2px_20px_rgba(0,0,0,1),0_0_40px_rgba(0,0,0,0.8),0_4px_8px_rgba(0,0,0,0.9)] sm:text-7xl lg:text-8xl">
               Your Business.
               <br />
               Your Story.
               <br />
-              <span className="gold-text">Your Experience.</span>
+              <span className="gold-text [text-shadow:0_0_30px_rgba(201,168,76,0.5),0_2px_20px_rgba(0,0,0,1),0_0_40px_rgba(0,0,0,0.8)]">Your Experience.</span>
             </h1>
 
-            <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground [text-shadow:0_1px_8px_rgba(0,0,0,0.9)]">
               You already have the photographs, videos, information and ideas. We turn them into a
               professional digital experience that allows your customers to see, explore and
               understand your business before they arrive.

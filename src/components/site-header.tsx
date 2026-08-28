@@ -12,7 +12,6 @@ const links = [
   { to: "/pricing", label: "Pricing" },
   { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
-  { to: "/dashboard", label: "Dashboard" },
 ] as const;
 
 export function SiteHeader() {
@@ -43,7 +42,7 @@ export function SiteHeader() {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-8 text-sm font-medium uppercase tracking-wider text-muted-foreground md:flex">
+          <nav className="hidden items-center gap-4 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground lg:flex">
             {links.map((l) => (
               <Link
                 key={l.to}
@@ -57,10 +56,10 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-5">
             <Link
               to="/login"
-              className="hidden text-xs font-medium uppercase tracking-wider text-muted-foreground transition-colors hover:text-gold sm:inline-flex"
+              className="hidden text-xs font-medium uppercase tracking-wider text-muted-foreground transition-colors hover:text-gold xl:inline-flex"
             >
               Dashboard
             </Link>
